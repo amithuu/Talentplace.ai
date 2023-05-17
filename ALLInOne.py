@@ -7,13 +7,12 @@ from selenium.webdriver.support import expected_conditions as ec
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ActionChains,Keys
 
-
-
 class All():
 
     def all(self):
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
         driver.get("https://test-talentplace.vercel.app/")
+        driver.maximize_window()
 
         # Login Button
         WebDriverWait(driver, 20).until(
@@ -26,6 +25,10 @@ class All():
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys("New@1234")
         WebDriverWait(driver, 20).until(
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
+        time.sleep(3)
+
+        # as new feature is arrived i am redirecting to onboarding//
+        driver.get("https://test-talentplace.vercel.app/onboarding")
         time.sleep(3)
 
 # """PERSONAL DETAILS"""
@@ -86,7 +89,6 @@ class All():
         # Check box
         # driver.find_element(By.CSS_SELECTOR, ".chakra-checkbox__control.css-exc098").click()
         # time.sleep(4)
-
         # Auto suggestion// Place
         place = driver.find_element(By.XPATH, "//input[contains(@name,'loca')]")
         place.clear()
@@ -114,6 +116,12 @@ class All():
 
         # Save and Next Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']"))).click()
+
+        # delete the old one
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-1ixh03']"))).click()
+        time.sleep(2)
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-11pbcgl']"))).click()
+        time.sleep(2)
 
 # """ADD COMPANY"""
         # Company Name
@@ -233,13 +241,13 @@ class All():
 
         # Roles and Responsibility
         # generate Responsibility
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable(
-            (By.XPATH, "//*[@class='chakra-stack css-vtn7ly']/div[6]/div/div[2]//button"))).click()
-
-        # Click on Some Points
-        for i in range(1, 4):
-            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,
-                                                                        f"//*[@class='chakra-stack css-vtn7ly']/div[6]/div/div[2]/div//div[1]/div[{i}]/button"))).click()
+#TODO: suggestion is adding so comment
+        # WebDriverWait(driver, 20).until(ec.element_to_be_clickable(
+        #     (By.XPATH, "//*[@class='chakra-stack css-vtn7ly']/div[6]/div/div[2]//button"))).click()
+        #
+        # # Click on Some Points
+        # for i in range(1, 4):
+        #     WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@class='chakra-stack css-vtn7ly']/div[6]/div/div[2]/div//div[1]/div[{i}]/button"))).click()
 
         # Click on Save Button
         driver.find_element(By.XPATH, "//button[text()='Save']").click()
@@ -250,7 +258,7 @@ class All():
             ec.element_to_be_clickable((By.XPATH, "//*[@class='chakra-button css-13zvu4r']"))).click()
 
         # Click on Next
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Next']"))).click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']//button[2]"))).click()
 
 # """ADD EDUCATION"""
 
@@ -293,13 +301,10 @@ class All():
         # time.sleep(3)
 
         # Project description
-        driver.find_element(By.XPATH, "//div[@class='ql-editor ql-blank']//p").send_keys(
-            "this is my project description")
+        driver.find_element(By.XPATH, "//*[@class='chakra-stack css-vtn7ly']/div[4]//p").send_keys("this is my project description")
 
         # Extra circular
-        driver.find_element(By.XPATH,
-                            "//html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[5]/div[1]/div[2]/div[1]/p[1]").send_keys(
-            "this is my extra circular activities.")
+        driver.find_element(By.XPATH, "//*[@class='chakra-stack css-vtn7ly']/div[5]//p").send_keys("this is my extra circular activities.")
 
         # click to upload
         click_image = driver.execute_script(" return document.getElementsByTagName('u')[0]")
@@ -311,19 +316,19 @@ class All():
         time.sleep(3)
 
         # next button
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[@class='chakra-text css-0']"))).click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='chakra-button css-13zvu4r'][2]"))).click()
         time.sleep(2)
 
 # """Cognitive skills"""
         for i in range(1, 7):
-            driver.find_element(By.XPATH, f"//*[@class='css-1bkkopt']/div[{i}]/label/span[1]").click()
-            slid = driver.find_element(By.XPATH, f"//*[@class='css-1bkkopt']//div[{i}]//div[@role='slider' and @id='slider-thumb-slider']")
+            driver.find_element(By.XPATH, f"//*[@class='css-3onofn']/div[1]/label/span[1]").click()
+            slid = driver.find_element(By.XPATH, f"//*[@class='css-3onofn']//div[{i}]//div[@role='slider' and @id='slider-thumb-slider']")
             ActionChains(driver).move_to_element(slid).pause(1).click_and_hold(slid).move_by_offset((35*i), 0).release().perform()
             time.sleep(3)
 
-            # Save
-            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))).click()
-            time.sleep(3)
+        # Save
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))).click()
+        time.sleep(3)
 
 
 
@@ -534,7 +539,7 @@ class All():
         # Next Button
         driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
 
-# """Publication"""
+# """Patent"""
 
         # Title
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//input[@type='text'and@name='title']"))).send_keys("This is Patients Title ")
@@ -582,3 +587,171 @@ class All():
 
         # Next Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]"))).click()
+
+# """Portfolio"""
+
+        # Title
+        driver.find_element(By.XPATH, "//input[@type='text'and@name='title']").send_keys("This is PATIENTS Title")
+
+        # Description
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='quill ']/div/div/p"))).send_keys("this is my automated patient")
+
+        # Click to upload
+        driver.find_element(By.XPATH, "//div[@class='chakra-input__group css-1taqsiu']/div/u").click()
+        time.sleep(5)
+
+        # Link of Portfolio
+        driver.find_element(By.XPATH, "//input[@type='text' and @name='link']").send_keys("https://test-talentplace.vercel.app/edit-profile/portfolio")
+
+        # Add Link + Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-1759tsq']").click()
+        time.sleep(2)
+
+        # Link Delete
+        # driver.find_element(By.XPATH, "//button[@aria-label='close' and @type='button']").click()
+
+        # Save Button
+        driver.find_element(By.XPATH, "//button[text()='Save']").click()
+        time.sleep(5)
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+        time.sleep(3)
+
+# """Voluntary Roles"""
+
+        # Role
+        driver.find_element(By.XPATH, "//input[@type='text'and@name='role']").send_keys("This is PATIENTS Title")
+
+        # Organization
+        driver.find_element(By.XPATH, "//input[@type='text'and@name='organizationName']").send_keys("This is PATIENTS Title")
+
+        # Duration From
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='startDate']").send_keys("January")
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='startDate']").send_keys(Keys.TAB)
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='startDate']").send_keys("2020")
+
+        # Duration To
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='endDate']").send_keys("march")
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='endDate']").send_keys(Keys.TAB)
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='endDate']").send_keys("2023")
+
+        # Check Box[" I am currently working here"]
+        # driver.find_element(By.XPATH, "//label[@class='chakra-checkbox css-wbedw1']/span[1]").click()
+
+        # Description
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='quill ']/div/div/p"))).send_keys("this is my first patient")
+
+        # Save Button
+        driver.find_element(By.XPATH, "//button[text()='Save']").click()
+        time.sleep(5)
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+        time.sleep(3)
+
+# """Honors and Awards"""
+
+        # Title
+        driver.find_element(By.XPATH, "//input[@type='text'and@name='title']").send_keys("This is  Title")
+
+        # Issuer
+        driver.find_element(By.XPATH, "//input[@type='text'and@name='issuer']").send_keys(" I am The Issuer")
+
+        # Duration From
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='issuedDate']").send_keys("January")
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='issuedDate']").send_keys(Keys.TAB)
+        driver.find_element(By.XPATH, "//input[@type='month' and@name='issuedDate']").send_keys("2020")
+
+        # Associated With
+        # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[text()='Associated With']"))).click()
+
+        # Description
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='quill ']/div/div/p"))).send_keys("this is my first patient")
+
+        # Save Button
+        driver.find_element(By.XPATH, "//button[text()='Save']").click()
+        time.sleep(5)
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+        time.sleep(3)
+
+# """Causes"""
+
+        # Select The Causes Max[6]
+        for i in range(1, 7):
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//div[@class='css-iuiha']/div[{i}]/label/span[1]"))).click()
+            time.sleep(2)
+
+        # Save Button
+        driver.find_element(By.XPATH, "//button[text()='Save']").click()
+        time.sleep(2)
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+        time.sleep(3)
+
+# """Hobbies"""
+
+        list1 = ['Sports', 'Travel', 'Books']
+        text = ['Cricket', 'Kerala', 'The untold Story']
+
+        for i in range(len(list1)):
+
+            # Hobbies Select
+            hob = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//div[@class=' css-19bb58m']//input")))
+            hob.click()
+            hob.send_keys(list1[i])
+            hob.send_keys(Keys.TAB)
+            time.sleep(2)
+
+            # Hobbies Text
+            hobbies = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//input[@name='hobby']")))
+            hobbies.send_keys(text[i])
+            time.sleep(2)
+
+            # Add Hobbies '+' Button
+            WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//button[ @aria-label='add-hobby']"))).click()
+            time.sleep(2)
+
+        # Save Button
+        driver.find_element(By.XPATH, "//button[text()='Save']").click()
+        time.sleep(2)
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+        time.sleep(2)
+
+# """Languages"""
+        lang = ['english', 'kannada', 'Hindi']
+        pro = ['inter', 'exp', 'begin']
+
+        for i in range(len(lang)):
+
+            # Language Drop Down
+            lan = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-1r8inbg']/div[1]/div/div//input")))
+            lan.send_keys(lang[i])
+            lan.send_keys(Keys.TAB)
+            time.sleep(2)
+
+            # Proficiency
+            prof = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-1r8inbg']/div[2]/div/div/div/div//input")))
+            prof.send_keys(pro[i])
+            prof.send_keys(Keys.TAB)
+            time.sleep(2)
+
+            # Add + Button
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-whwlan']"))).click()
+            time.sleep(2)
+
+        # Save Button
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))).click()
+
+        # Next Button
+        driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
+
+ref = All()
+ref.all()
