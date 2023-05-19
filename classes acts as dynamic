@@ -1,8 +1,14 @@
+Signup"
+Login Page"
+Onboarding"
+Forms"
+    :Projects:
+        Skill button in Projects @class is dynamic
+            //*[@class='custom-select__input-container css-19bb58m']//input
 
+            next button from dashboard and onboarding class is different
+              //button[@class='chakra-button css-13zvu4r'][2] .. if nay error in next and back button in dashboard change the Class.
+                from dashboard for all forms from Project.
+Assessment"
+Side Navigation bar Forms"
 
-Skill button in Projects @class is dynamic
-//*[@class='custom-select__input-container css-19bb58m']//input
-
-next button from dashboard and onboarding class is different
-//button[@class='chakra-button css-13zvu4r'][2] .. if nay error in next and back button in dashboard change the Class.
-                                                    from dashboard for all forms from Project.
