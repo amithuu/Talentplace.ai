@@ -8,6 +8,8 @@ from selenium.webdriver.common.keys import Keys
 from LoginPage_auto import LoginPage
 class PersonalDetails(LoginPage):
     def personaldetails(self):
+        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+        driver.get("https://test-talentplace.vercel.app/")
 
         # first name change
         driver.find_element(By.ID, "first-name").clear()
