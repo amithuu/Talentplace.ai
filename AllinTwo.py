@@ -1,5 +1,5 @@
-# Todo: here the flow is User logs in and t
-#  akes assessment and checks his personality review!!!!
+# Todo: here the flow is User logs in and
+#  takes assessment and checks his personality review!!!!
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -24,7 +24,7 @@ class NewUser1:
         # """ Login Page"""
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(
-            "vifisut@mailinator.com")
+            "qazawej@mailinator.com.com")
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys("New@1234")
         WebDriverWait(driver, 20).until(
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
