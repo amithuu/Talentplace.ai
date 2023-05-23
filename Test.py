@@ -8,14 +8,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-i = 10
+driver.maximize_window()
+k = 25
 name = "Autotest"
-email = f"autotest{i}@g.co"
+email = f"autotest{k}@g.co"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
-phone_number = f"+1 1{i}3449771"
+phone_number = f"+1 1{k}3449771"
 company_name = "cognizant"
+skills = "Python"
 # cancel = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Cancel']")))
+
 class Automation:
     # Sign =-Up Page
     def signup(self):
@@ -49,13 +52,17 @@ class Automation:
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']"))).click()
         time.sleep(5)
+        time.sleep(3)
 
     def login(self):
+
+        driver.get("https://test-talentplace.vercel.app/login")
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
         WebDriverWait(driver, 20).until(
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
+        time.sleep(3)
         time.sleep(3)
 
     def welcome_page(self):
@@ -101,7 +108,7 @@ class Automation:
         place = driver.find_element(By.XPATH, "//input[contains(@name,'loca')]")
         place.send_keys(Keys.CONTROL + "a")
         place.send_keys(location)
-        time.sleep(5)
+        time.sleep(3)
         # Headline
         driver.find_element(By.NAME, "headline").clear()
         driver.find_element(By.NAME, "headline").send_keys("Python automation  Tester")
@@ -113,12 +120,9 @@ class Automation:
         time.sleep(2)
         # Save
         save = driver.find_element(By.XPATH, "//button[text()='Save']")
-        # Discard
-        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-        discard.click()
-        # Next
-        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
-        next_.click()
+        save.click()
+        time.sleep(5)
+
     def nextback(self):
         # Next button
         back_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[1]"))).click()  # this is next here
@@ -171,27 +175,27 @@ class Automation:
         management_level = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[1]/div[2]//input")))
         management_level.send_keys("Junior")
         management_level.send_keys(Keys.TAB)
-        time.sleep(5)
+        time.sleep(1)
         # Location
         loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[2]/div[1]//input")))
         loc.send_keys(Keys.CONTROL + "a")
         loc.send_keys(location)
-        loc.send_keys(Keys.TAB)
+        time.sleep(3)
         # Functional Area
         functional_area = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[2]/div[2]//input")))
         functional_area.send_keys("Development")
         functional_area.send_keys(Keys.TAB)
-        time.sleep(2)
+        time.sleep(1)
         # Skill
         skill = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]/div[1]//input")))
         skill.send_keys("Python")
         skill.send_keys(Keys.TAB)
-        time.sleep(2)
+        time.sleep(1)
         # Expertise
         expertise = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]/div[2]//input")))
         expertise.send_keys("skilful")
         expertise.send_keys(Keys.TAB)
-        time.sleep(2)
+        time.sleep(1)
         # Add Skill Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]/div[2]//button"))).click()
         # Start Date and End date
@@ -199,12 +203,12 @@ class Automation:
         start_date.send_keys("December")
         start_date.send_keys(Keys.TAB)
         start_date.send_keys("2007")
-        time.sleep(2)
+        time.sleep(1)
         end_date = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[4]/div[2]//input")))
         end_date.send_keys("April")
         end_date.send_keys(Keys.TAB)
         end_date.send_keys("2011")
-        time.sleep(2)
+        time.sleep(1)
         # If user is Still working in same Company
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[4]/div[2]/label//input"))).click()
         # Salary Start and End
@@ -247,10 +251,11 @@ class Automation:
         university = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[1]/div[2]//input")))
         university.send_keys("Master in computer application(MCA)")
         university.send_keys(Keys.TAB)
-        time.sleep(5)
+        time.sleep(1)
         # Location
         loc = driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[2]/div[1]//input")
         loc.send_keys(location)
+        time.sleep(3)
         loc.send_keys(Keys.TAB)
         time.sleep(2)
         # CGPA
@@ -265,15 +270,17 @@ class Automation:
         driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]//input").send_keys(Keys.TAB)
         driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]//input").send_keys("2022")
         # Currently Pursuing
-        currently_pursuing = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]/label//input")))
-        currently_pursuing.click()
-        time.sleep(3)
+        # currently_pursuing = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/div[2]/label//span")))
+        # currently_pursuing.click()
+        # time.sleep(3)
         # Project Description
         project_description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[4]//p")))
         project_description.send_keys(" This is my automation Project ")
+        time.sleep(1)
         # Extra Circular Activities
         extra_circular_activities = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[5]//p")))
         extra_circular_activities.send_keys(" These are my extra circular activities ")
+        time.sleep(1)
         # Click to Upload Image
         click_upload_image = driver.execute_script(" return document.getElementsByTagName('u')[0]")
         driver.execute_script("arguments[0].click();", click_upload_image)
@@ -284,13 +291,436 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
+        time.sleep(5)
+        # Discard
+        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        discard.click()
+
+    def cognitive_skills(self):
+        """Cognitive skills"""
+        for s in range(1, 7):
+            driver.find_element(By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div/div/div/div/div[{s}]//span[1]").click()
+            slid = driver.find_element(By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div/div/div/div/div[{s}]//div[@role='slider']")
+            ActionChains(driver).move_to_element(slid).pause(1).click_and_hold(slid).move_by_offset((35 * s), 0).release().perform()
+            time.sleep(2)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(2)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
+        next_.click()
+
+    def carrier_summary(self):
+        driver.get("https://test-talentplace.vercel.app/onboarding/career-summary")
+        """ADD CARRIER SUMMARY"""
+        # Generate Summary
+        driver.set_window_size(1200, 1400)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
+        generate_suggestion.click()
+        time.sleep(12)
+        for a in range(1, 4):
+            driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[1]/div/div[{a}]//button").click()
+            time.sleep(1)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(3)
+        # Customer Profile Button
+        customize_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Customise Profile']")))
+        customize_profile.click()
+        time.sleep(2)
+
+    def customize_profile(self):
+        driver.maximize_window()
+        """Customer Profile"""
+        # Adding All the Other Forms
+        for i in range(1, 11):
+            add_forms = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='chakra-stack css-ihq88o']/div[2]/div[1]//button")))
+            add_forms.click()
+            time.sleep(2)
+        # Save and Next Button
+        save_and_next = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']")))
+        save_and_next.click()
+        time.sleep(2)
+
+    def profile_complition(self):
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
+        next_.click()
+        """Projects"""
+        # Project Name
+        project_name = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//input[@type='text' and @name='name']")))
+        project_name.send_keys("Aws Project")
+        time.sleep(1)
+        # Start date
+        start_date = driver.find_element(By.XPATH, "//input[@type='month' and @name='start_date']")
+        start_date.send_keys("January")
+        start_date.send_keys(Keys.TAB)
+        start_date.send_keys("2020")
+        # End date
+        end_date = driver.find_element(By.XPATH, "//input[@type='month' and @name='end_date']")
+        end_date.send_keys("02")
+        end_date.send_keys(Keys.TAB)
+        end_date.send_keys("2022")
+        # Associated with
+        associated_with = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[3]/div[1]//input")))
+        associated_with.send_keys(company_name)
+        associated_with.send_keys(Keys.TAB)
+        # Project url
+        project_url = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[3]/div[2]//input")))
+        project_url.send_keys("https://web.whatsapp.com")
+        # Description
+        description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[4]//p")))
+        description.send_keys(" hlo i am learning Pytest automation tool ")
+        # Skills
+        skill = driver.find_element(By.XPATH,"//div[@role='region']/form/div/div[5]/div[2]/div[1]//input")
+        skill.send_keys("Python")
+        skill.send_keys(Keys.TAB)
+        # Skill Ranger
+        slider = driver.find_element(By.XPATH, "//div[@role='region']/form/div/div[5]/div[2]/div[2]//div[@role='slider']")
+        ActionChains(driver).move_to_element(slider).pause(1).click_and_hold(slider).move_by_offset((35 * 4), 0).release().perform()
+        time.sleep(1)
+        # Button '+'
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='Add Skill Complexity']"))).click()
+        # Skill applications
+        skill_application = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[6]//p")))
+        skill_application.send_keys(" This is skill description what i have ")
+        time.sleep(1)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(2)
+
+    def certificate(self):
+        for i in range(2):
+            # Next
+            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
+            next_.click()
+            time.sleep(3)
+            # Discard
+            discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+            discard.click()
+            time.sleep(2)
+        """Certificate"""
+        # Title
+        title = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[1]/div[1]//input")))
+        title.send_keys(" This is Project Title ")
+        time.sleep(1)
+        # Institution
+        institution = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]/div[2]//input")
+        institution.send_keys(" Where you did Certificate ")
+        time.sleep(1)
+        # Duration from
+        duration_from = driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[1]//input")
+        duration_from.send_keys("January")
+        duration_from.send_keys(Keys.TAB)
+        duration_from.send_keys("1999")
+        time.sleep(2)
+        # Duration to
+        duration_to = driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[2]//input")
+        duration_to.send_keys("Feb")
+        duration_to.send_keys(Keys.TAB)
+        duration_to.send_keys("2020")
+        time.sleep(2)
+        # Skill add
+        skill = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[3]/div[2]/div[1]//input")))
+        skill.send_keys(skills)
+        skill.send_keys(Keys.TAB)
+        time.sleep(2)
+        # Add Skill '+' Button
+        driver.find_element(By.XPATH, "//*[@role='region']/div/div[3]/div[2]/div[2]//button").click()
+        time.sleep(2)
+        # Projects Description
+        project_description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[4]//p")))
+        project_description.send_keys(" This is certification description ")
+        time.sleep(1)
+        # Upload Certificate
+        upload_certificate = driver.execute_script("return document.getElementsByTagName('u')[0];")
+        driver.execute_script("arguments[0].click();", upload_certificate)
+        time.sleep(5)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(2)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+        # Discard
+        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        discard.click()
+        time.sleep(2)
+
+    def publication(self):
+        # """Publication"""
+        # Title
+        title = driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[1]/div[1]//input")
+        title.send_keys("This is publication Title")
+        # Publication ID
+        publisher_id = driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[1]/div[2]//input")
+        publisher_id.send_keys("This is publisher ID")
+        # Publication Date
+        publisher_date = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[2]/div[1]//input")))
+        publisher_date.send_keys("02-02-2021")
+        # Publication Url
+        publication_url = driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[2]/div[2]//input")
+        publication_url.send_keys("https://test-talentplace.vercel.app")
+        # Add Author
+        add_author = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]//button")))
+        add_author.click()
+        time.sleep(3)
+        # Author title
+        author_title = Select(driver.find_element(By.XPATH, "//select[@name='authors.0.pronounce']"))
+        author_title.select_by_visible_text("Mr")
+        # Author Name
+        author_name = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[1]/div[2]//input")))
+        author_name.send_keys(name)
+        # Author linkdIn link
+        linkdin_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[2]//input")))
+        linkdin_link.send_keys("https://www.linkedin.com/in/amith-kulkarni-1326241b4")
+        # Delete Author
+        # delete_author = driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[2]//button")
+        # delete_author.click()
+        # Description
+        # Publication Description
+        publication_description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[4]//p")))
+        publication_description.send_keys("this is my first Publication")
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(2)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+
+    def patent(self):
+        """Patent"""
+        # Title
+        title = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[1]/div[1]//input")))
+        title.send_keys("This is Patients Title ")
+        # Patient Application Number
+        patent_application_number = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[1]/div[2]//input")))
+        patent_application_number.send_keys("123456")
+        # Issue Date
+        issue_date = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[2]/div[1]//input")))
+        issue_date.send_keys("02-02-2021")
+        issue_date.send_keys(Keys.TAB)
+        # Patent Url
+        patent_url = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[2]/div[2]//input")))
+        patent_url.send_keys("https://test-talentplace.vercel.app")
+        # Patient Not yet Issued Check box
+        # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/label//span[1]"))).click()
+        # Add Author
+        add_author = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]//button")))
+        add_author.click()
+        # Author Title
+        author_title = Select(driver.find_element(By.XPATH, "//select[@name='investors.0.pronounce']"))
+        author_title.select_by_visible_text("Mr")
+        # Author Name
+        author_name = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[1]/div[2]//input")))
+        author_name.send_keys(name)
+        # linkdIn Id
+        linkdin_id = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[2]//input")))
+        linkdin_id.send_keys("https://www.linkedin.com/in/amith-kulkarni-1326241b4")
+        time.sleep(2)
+        # Delete Author
+        # driver.find_element(By.XPATH, "//*[@role='region']/form/div/div[3]/form/div/div[2]//button").click()
+        # Description
+        description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[4]//p")))
+        description.send_keys("this is my first Publication")
+        time.sleep(2)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(2)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+
+    def portfolio(self):
+        """Portfolio"""
+        # Title
+        patent_title = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]//input")
+        patent_title.send_keys("This is PATIENTS Title")
+        # Description
+        description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[2]//p")))
+        description.send_keys("this is my automated patient")
+        # Upload Certificate
+        upload_certificate = driver.execute_script("return document.getElementsByTagName('u')[0];")
+        driver.execute_script("arguments[0].click();", upload_certificate)
+        time.sleep(5)
+        # Link of Portfolio
+        portfolio_link = driver.find_element(By.XPATH, "//*[@role='region']/div/div[4]/div/div[2]/div//input")
+        portfolio_link.send_keys("https://test-talentplace.vercel.app/edit-profile/portfolio")
+        # Add Link + Button
+        driver.find_element(By.XPATH, "//*[@role='region']/div/div[4]/div/div[2]//button").click()
+        time.sleep(1)
+        # Link Delete
+        # driver.find_element(By.XPATH, "//*[@role='region']/div/div[4]/div/div[1]//button").click()
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+
+    def voluntary_roles(self):
+        """Voluntary Roles"""
+        # Role
+        role = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]/div[1]//input")
+        role.send_keys("This is PATIENTS Title")
+        # Organization
+        organization = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]/div[2]//input")
+        organization.send_keys("This is PATIENTS Title")
+        # Duration From
+        duration_from = driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[1]//input")
+        duration_from.send_keys("January")
+        duration_from.send_keys(Keys.TAB)
+        duration_from.send_keys("2020")
+        # Duration To
+        duration_to = driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[2]//input")
+        duration_to.send_keys("march")
+        duration_to.send_keys(Keys.TAB)
+        duration_to.send_keys("2023")
+        # Check Box[" I am currently working here"]
+        # driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[2]/label/span[1]").click()
+        # Description
+        description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[3]//p")))
+        description.send_keys("this is my first patient")
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+
+    def honor_rewards(self):
+        """Honors and Awards"""
+        # Title
+        title_name = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]/div[1]//input")
+        title_name.send_keys("This is  Title")
+        # Issuer
+        issuer_name = driver.find_element(By.XPATH, "//*[@role='region']/div/div[1]/div[2]//input")
+        issuer_name.send_keys(" I am The Issuer")
+        # Duration From
+        duration_from = driver.find_element(By.XPATH, "//*[@role='region']/div/div[2]/div[1]//input")
+        duration_from.send_keys("January")
+        duration_from.send_keys(Keys.TAB)
+        duration_from.send_keys("2020")
+        # Associated With
+        associated_with = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[2]/div[2]//input")))
+        associated_with.send_keys(company_name)
+        # Description
+        description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[3]//p")))
+        description.send_keys("this is my first patient")
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+        time.sleep(3)
+
+    def causes(self):
+        driver.get("https://test-talentplace.vercel.app/onboarding/causes")
+        time.sleep(2)
+        """Causes"""
+        # Select The Causes Max[6]
+        for i in range(1, 7):
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//div[@id='root']/div[2]/div/div/div/div/div[1]/div/div[{i}]//span[1]"))).click()
+            time.sleep(1)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+        time.sleep(2)
+
+    def hobbies(self):
+        # """Hobbies"""
+        category = ['Sports', 'Travel', 'Books']
+        hobby = ['Cricket', 'Kerala', 'The untold Story']
+        for i in range(len(category)):
+            # Category Select
+            categorys = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[1]//input")))
+            categorys.click()
+            categorys.send_keys(category[i])
+            categorys.send_keys(Keys.TAB)
+            time.sleep(2)
+            # Hobbies Text
+            hobbies = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]//input")))
+            hobbies.send_keys(hobby[i])
+            time.sleep(2)
+            # Add Hobbies '+' Button
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]/button"))).click()
+            time.sleep(2)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+        time.sleep(2)
+
+    def languages(self):
+        # """Languages"""
+        language = ['english', 'kannada', 'Hindi']
+        proficiency = ['inter', 'exp', 'begin']
+        for i in range(len(language)):
+            # Language Drop Down
+            lan = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[1]//input")))
+            lan.send_keys(language[i])
+            lan.send_keys(Keys.TAB)
+            # Proficiency
+            prof = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]//input")))
+            prof.send_keys(proficiency[i])
+            prof.send_keys(Keys.TAB)
+            # Add + Button
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]/button"))).click()
+            time.sleep(2)
+        # Save
+        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+        save.click()
+        time.sleep(1)
+        # Next
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_.click()
+        time.sleep(2)
+
+    def dashboard(self):
+        dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
+        dashboard.click()
 
 
 ref = Automation()
-ref.signup()
+# ref.signup()
 ref.login()
-ref.welcome_page()
-ref.personal_details()
-ref.nextback()
-ref.experience()
-ref.education()
+# ref.welcome_page()
+# ref.personal_details()
+# ref.nextback()
+# ref.experience()
+# ref.education()
+# ref.cognitive_skills()
+# ref.carrier_summary()
+# ref.customize_profile()
+# ref.profile_complition()
+# ref.certificate()
+# ref.publication()
+# ref.patent()
+# ref.portfolio()
+# ref.voluntary_roles()
+# ref.honor_rewards()
+ref.causes()
+ref.hobbies()
+ref.languages()
+ref.dashboard()
+
