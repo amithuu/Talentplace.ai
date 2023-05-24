@@ -9,7 +9,7 @@ from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.maximize_window()
-k = 32
+k = 40
 name = "Autotest"
 email = f"autotest{k}@g.co"
 password = "New@1234"
@@ -23,9 +23,11 @@ class Automation:
     # Sign =-Up Page
     def signup(self):
 
-        driver.get("https://test-talentplace.vercel.app/sign-up")
+        driver.get("https://test-talentplace.vercel.app/")
 
-        """Sign up button !! WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//button[text()='Sign Up']"))).click()"""
+        """Sign up button !! """
+        sign_up = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']")))
+        sign_up.click()
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='firstName']"))).send_keys(name)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='lastName']"))).send_keys(name)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='email']"))).send_keys(email)
@@ -55,8 +57,6 @@ class Automation:
         time.sleep(3)
 
     def login(self):
-
-        driver.get("https://test-talentplace.vercel.app/login")
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
@@ -232,9 +232,9 @@ class Automation:
         back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']//button")))
         back_to_company.click()
         time.sleep(2)
-        # Discard
-        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-        discard.click()
+        # # Discard
+        # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        # discard.click()
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
@@ -292,9 +292,9 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
         time.sleep(5)
-        # Discard
-        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-        discard.click()
+        # # Discard
+        # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        # discard.click()
 
     def cognitive_skills(self):
         """Cognitive skills"""
@@ -306,13 +306,12 @@ class Automation:
         # Save
         save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
         save.click()
-        time.sleep(2)
+        time.sleep(1)
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
 
     def carrier_summary(self):
-        driver.get("https://test-talentplace.vercel.app/onboarding/career-summary")
         """ADD CARRIER SUMMARY"""
         # Generate Summary
         driver.set_window_size(1200, 1400)
@@ -399,9 +398,9 @@ class Automation:
             next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
             next_.click()
             time.sleep(3)
-            # Discard
-            discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-            discard.click()
+            # # Discard
+            # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+            # discard.click()
             time.sleep(2)
         """Certificate"""
         # Title
@@ -447,9 +446,9 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
-        # Discard
-        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-        discard.click()
+        # # Discard
+        # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        # discard.click()
         time.sleep(2)
 
     def publication(self):
@@ -512,6 +511,7 @@ class Automation:
         # Patient Not yet Issued Check box
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/label//span[1]"))).click()
         # Add Author
+        time.sleep(3)
         add_author = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[3]//button")))
         add_author.click()
         # Author Title
@@ -819,6 +819,23 @@ class Automation:
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
         time.sleep(2)
 
+    def my_profile(self):
+        """ My Profile """
+        # Click on My Profile
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='My Profile']"))).click()
+        my_profile_window = driver.current_window_handle
+        # CLick on Share Button to share the Profile
+        share_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[3]/div[1]//button[3]")))
+        share_profile.click()
+        # Copy link
+        copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='edit profile'][4]")))
+        copy_link.click()
+        time.sleep(3)
+        driver.get("https://test-talentplace.vercel.app/share-profile/amithkulkarni98")
+        driver.switch_to.window(my_profile_window)
+        time.sleep(2)
+        driver.back()
+
 
 ref = Automation()
 ref.signup()
@@ -844,4 +861,5 @@ ref.languages()
 ref.dashboard()
 ref.take_assesment()
 ref.personality_assesment()
+ref.my_profile()
 

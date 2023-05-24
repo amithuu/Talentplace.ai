@@ -1,4 +1,4 @@
-# Todo: ! Sign-UP ! Login ! Complete Profile !
+# Todo: ! Sign-UP ! Login ! Complete Profile ! Take Assessment ! My Profile ! Share Profile !
 
 import time
 from selenium import webdriver
@@ -21,13 +21,13 @@ class Automation:
     # Sign =-Up Page
     def signup(self):
 
-        driver.get("https://test-talentplace.vercel.app/sign-up")
+        driver.get("https://www.talentplace.ai/")
 
-        """Sign up button !! WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//button[text()='Sign Up']"))).click()"""
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='firstName']"))).send_keys(
-            name)
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='lastName']"))).send_keys(
-            name)
+        """Sign up button !! """
+        sign_up = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//button[text()='Sign Up']")))
+        sign_up.click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='firstName']"))).send_keys(name)
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='lastName']"))).send_keys(name)
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='email']"))).send_keys(
             email)
@@ -59,7 +59,6 @@ class Automation:
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']"))).click()
         time.sleep(10)
-
     def login(self):
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
@@ -67,7 +66,6 @@ class Automation:
         WebDriverWait(driver, 20).until(
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
         time.sleep(3)
-
     def welcome_page(self):
         """Welcome, Page"""
         # Get Started Button for Carrier Profile
@@ -79,7 +77,6 @@ class Automation:
         # time.sleep(3)
         # In Dash Board  !! Click on Build Carrier Profile
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Build Career Profile']"))).click()
-
     def personal_details(self):
         """PERSONAL DETAILS"""
         # First name
@@ -145,7 +142,6 @@ class Automation:
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]"))).click()
         # Save and Next Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']"))).click()
-
     # delete the old one
     # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-1ixh03']"))).click()
     # time.sleep(2)
@@ -614,7 +610,6 @@ class Automation:
         # Next Button
         driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
         time.sleep(3)
-
     def hobbies(self):
         # """Hobbies"""
         category = ['Sports', 'Travel', 'Books']
@@ -639,7 +634,6 @@ class Automation:
         # Next Button
         driver.find_element(By.XPATH, "//button[@class='chakra-button css-13zvu4r'][2]").click()
         time.sleep(2)
-
     def languages(self):
         # """Languages"""
         language = ['english', 'kannada', 'Hindi']
@@ -663,6 +657,177 @@ class Automation:
         # Next Button
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']//button[2]")))
         next_.click()
+    def dashboard(self):
+        dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
+        dashboard.click()
+        time.sleep(3)
+    def take_assesment(self):
+        # If user already Logged In.
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Take Assessment']"))).click()
+        time.sleep(2)
+        # Click on check Box
+        time.sleep(3)
+        check_box = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]/div[1]/div[2]/div[1]//span")))
+        check_box.click()
+        # Start Test
+        start_test = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]/div[1]/div[2]/div[1]/div/div[3]//button")))
+        start_test.click()
+        # Answers
+        for i in range(1, 10):
+            for j in range(1, 6):
+                answer = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div/div[2]/div[1]/div[2]/div[2]//p[{j}]")))
+                answer.click()
+        # Click on submit
+        submit = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]/div[1]/div[3]//button[2]")))
+        submit.click()
+        time.sleep(15)
+        # Click on view Report
+        view_report = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]//button")))
+        view_report.click()
+        time.sleep(5)
+    def personality_assesment(self):
+        """Personality Assessment"""
+        # Overview
+        # page_down.send_keys(Keys.PAGE_DOWN)
+        # page_down.send_keys(Keys.PAGE_DOWN)
+        # time.sleep(3)
+        # page_down.send_keys(Keys.PAGE_UP)
+        # page_down.send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # Click on Carrier Strength
+        carrier_strength = driver.execute_script("return document.getElementsByTagName('a')[3];")
+        driver.execute_script("arguments[0].click();", carrier_strength)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        for i in range(1, 7):
+            tablist = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@role='tablist']//button[{i}]")))
+            tablist.click()
+            driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+            driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+            time.sleep(2)
+            driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+            driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+            time.sleep(2)
+        # Click on Upgrade Button[//*[@id='root']/div[2]/div[2]/div/div/div/div/div/div[2]/div[{6}]/div/div[{3}]
+        # //button]{1,6} for tabs and {3,4} for inside tabs change
+        # Next and Previous
+        # next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div[3]/a[2]//button")))
+        # next_.click()
+        # back_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div[3]/a[1]//button")))
+        # back_.click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div/div[2]/div[6]/div/div[3]//button"))).click()
+        time.sleep(2)
+        driver.back()
+        time.sleep(2)
+        # Click on Carrier Options
+        carrier_options = driver.execute_script("return document.getElementsByTagName('a')[4];")
+        driver.execute_script("arguments[0].click();", carrier_options)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # CLick on Resume Improvements
+        resume_improvements = driver.execute_script("return document.getElementsByTagName('a')[5];")
+        driver.execute_script("arguments[0].click();", resume_improvements)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # CLick on Interview Questions
+        interview_questions = driver.execute_script("return document.getElementsByTagName('a')[6];")
+        driver.execute_script("arguments[0].click();", interview_questions)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # CLick on Leadership Potential
+        leadership_potential = driver.execute_script("return document.getElementsByTagName('a')[7];")
+        driver.execute_script("arguments[0].click();", leadership_potential)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # CLick on Self Development
+        self_development = driver.execute_script("return document.getElementsByTagName('a')[8];")
+        driver.execute_script("arguments[0].click();", self_development)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+        # click on Overview
+        overview = driver.execute_script("return document.getElementsByTagName('a')[2];")
+        driver.execute_script("arguments[0].click();", overview)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+        time.sleep(2)
+
+    def my_profile(self):
+        """ My Profile """
+        # Click on My Profile
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='My Profile']"))).click()
+        my_profile_window = driver.current_window_handle
+        # CLick on Share Button to share the Profile
+        share_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[3]/div[1]//button[3]")))
+        share_profile.click()
+        # Copy link
+        copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='edit profile'][4]")))
+        copy_link.click()
+        time.sleep(3)
+        driver.get("https://test-talentplace.vercel.app/share-profile/amithkulkarni98")
+        driver.switch_to.window(my_profile_window)
+        time.sleep(2)
+        driver.back()
+
+    def membership(self):
+        """ Membership """
+        # Click on Membership
+        membership = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']")))
+        membership.click()
+        time.sleep(3)
+        # Click on Subscribe Button
+        # Entry
+        entry = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[2]//button")))
+        entry.click()
+        # Mid
+        page_down = driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        mid = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[3]//button")))
+        mid.click()
+        time.sleep(5)
+        # Senior
+        senior = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[4]//button")))
+        senior.click()
+        # Slide the browser to down.
+        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(3)
+        # If User wants to Subscribe for any Plan
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
+        time.sleep(3)
+        # CLose Button after Subscribe
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Close this Tab']"))).click()
+        time.sleep(3)
+        # Click on refresh Button
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
+        time.sleep(4)
+        driver.refresh()
 
 
 ref = Automation()
