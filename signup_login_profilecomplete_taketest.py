@@ -20,7 +20,7 @@ skills = "Python"
 # cancel = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Cancel']")))
 
 class Automation:
-    # Sign =-Up Page
+    # Sign Up Page
     def signup(self):
 
         driver.get("https://test-talentplace.vercel.app/")
@@ -333,7 +333,7 @@ class Automation:
 
     def customize_profile(self):
         driver.maximize_window()
-        """Customer Profile"""
+        """Customer Profile"""k
         # Adding All the Other Forms
         for i in range(1, 11):
             add_forms = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='chakra-stack css-ihq88o']/div[2]/div[1]//button")))
@@ -694,6 +694,7 @@ class Automation:
         time.sleep(2)
 
     def dashboard(self):
+
         dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
         dashboard.click()
         time.sleep(3)
