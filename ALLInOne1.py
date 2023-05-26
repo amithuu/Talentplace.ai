@@ -779,7 +779,6 @@ class Automation:
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
         time.sleep(2)
-
     def my_profile(self):
         """ My Profile """
         # Click on My Profile
@@ -796,7 +795,6 @@ class Automation:
         driver.switch_to.window(my_profile_window)
         time.sleep(2)
         driver.back()
-
     def membership(self):
         """ Membership """
         # Click on Membership
@@ -804,19 +802,54 @@ class Automation:
         membership.click()
         time.sleep(3)
         # Click on Subscribe Button
+        for i in range(2, 5):
+            choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div[2]/div{i}//button")))
+            choice.click()
+        # # Entry
+        # entry = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[2]//button")))
+        # entry.click()
+        # # Mid
+        # page_down = driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        # mid = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[3]//button")))
+        # mid.click()
+        # time.sleep(5)
+        # # Senior
+        # senior = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[4]//button")))
+        # senior.click()
+        #! Form Fill
+        name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
+        name_.send_keys(name)
+
+        # Slide the browser to down.        
+        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(3)
+        # If User wants to Subscribe for any Plan
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
+        time.sleep(3)
+        # CLose Button after Subscribe
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Close this Tab']"))).click()
+        time.sleep(3)
+        # Click on refresh Button
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
+        time.sleep(4)
+        driver.refresh()
+    # Click on Membership
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']"))).click()
+        time.sleep(3)
+
+        # Click on Subscribe Button
         # Entry
-        entry = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[2]//button")))
-        entry.click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[2]//button"))).click()
         # Mid
-        page_down = driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
-        mid = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[3]//button")))
-        mid.click()
+        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[3]//button"))).click()
         time.sleep(5)
         # Senior
-        senior = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[4]//button")))
-        senior.click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[4]//button"))).click()
+
         # Slide the browser to down.
         driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+
         time.sleep(3)
         # If User wants to Subscribe for any Plan
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
