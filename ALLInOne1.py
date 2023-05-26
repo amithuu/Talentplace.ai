@@ -805,22 +805,27 @@ class Automation:
         for i in range(2, 5):
             choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div[2]/div{i}//button")))
             choice.click()
-        # # Entry
-        # entry = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[2]//button")))
-        # entry.click()
-        # # Mid
-        # page_down = driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
-        # mid = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[3]//button")))
-        # mid.click()
-        # time.sleep(5)
-        # # Senior
-        # senior = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[4]//button")))
-        # senior.click()
-        #! Form Fill
-        name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
-        name_.send_keys(name)
+            ! Form Fill
+            name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
+            name_.send_keys(name)
+            country = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
+            country.send_keys(country)
+            state = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
+            state.send_keys(name)
+            city = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
+            city.send_keys(name)
+            street = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
+            street.send_keys(name)
+            zip_code = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
+            zip_code.send_keys(name)
+            ! Close Form
+            close = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='Close']")))
+            close.click()
+            # Proceed
+            # proceed = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form//button")))
+            # proceed.click()
 
-        # Slide the browser to down.        
+        # Slide the browser to down.
         driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
         time.sleep(3)
         # If User wants to Subscribe for any Plan
@@ -833,7 +838,7 @@ class Automation:
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
         time.sleep(4)
         driver.refresh()
-    # Click on Membership
+        # Click on Membership
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']"))).click()
         time.sleep(3)
 

@@ -9,7 +9,7 @@ from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.maximize_window()
-k = 54
+k = 59
 name = "Autotest"
 email = f"autotest{k}@g.co"
 password = "New@1234"
@@ -290,8 +290,13 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
         time.sleep(2)
+        # Discard
+        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        discard.click()
 
     def cognitive_skills(self):
+        driver.get("https://test-talentplace.vercel.app/onboarding/cognitive-skills")
+        time.sleep(4)
         """Cognitive skills"""
         for s in range(1, 7):
             driver.find_element(By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div/div/div/div/div[{s}]//span[1]").click()
@@ -337,12 +342,19 @@ class Automation:
         # Save and Next Button
         save_and_next = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']")))
         save_and_next.click()
-        time.sleep(2)
+        time.sleep(4)
 
-    def profile_completion(self):
-        # Next
-        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
-        next_.click()
+    def dashboard(self):
+        dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
+        dashboard.click()
+        time.sleep(3)
+        # Click on Edit Profile
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Edit Profile']"))).click()
+
+        # GO to  Projects
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Projects']"))).click()
+
+    def projects(self):
         """Projects"""
         # Project Name
         project_name = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//input[@type='text' and @name='name']")))
@@ -392,7 +404,7 @@ class Automation:
             # Next
             next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
             next_.click()
-            time.sleep(3)
+            time.sleep(2)
             # Discard
             discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
             discard.click()
@@ -439,7 +451,7 @@ class Automation:
         save.click()
         time.sleep(4)
         # Next
-        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+        next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
         # Discard
         discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
@@ -606,6 +618,7 @@ class Automation:
         # Associated With
         associated_with = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[2]/div[2]//input")))
         associated_with.send_keys(company_name)
+        associated_with.send_keys(Keys.TAB)
         # Description
         description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/div/div[3]//p")))
         description.send_keys("this is my first patient")
@@ -634,7 +647,6 @@ class Automation:
         time.sleep(2)
 
     def hobbies(self):
-        driver.get("https://test-talentplace.vercel.app/onboarding/hobbies")
         # """Hobbies"""
         category = ['Sports', 'Travel', 'Books']
         hobby = ['Cricket', 'Kerala', 'The untold Story']
@@ -686,11 +698,6 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
         time.sleep(2)
-
-    def dashboard(self):
-        dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
-        dashboard.click()
-        time.sleep(3)
 
     def take_assesment(self):
         # If user already Logged In.
@@ -832,17 +839,18 @@ class Automation:
 
 
 ref = Automation()
-ref.signup()
+# ref.signup()
 ref.login()
-ref.welcome_page()
-ref.personal_details()
-ref.nextback()
-ref.experience()
-ref.education()
+# ref.welcome_page()
+# ref.personal_details()
+# ref.nextback()
+# ref.experience()
+# ref.education()
 ref.cognitive_skills()
 ref.carrier_summary()
 ref.customize_profile()
-ref.profile_completion()
+ref.dashboard()
+ref.projects()
 ref.certificate()
 ref.publication()
 ref.patent()
@@ -852,8 +860,8 @@ ref.honor_rewards()
 ref.causes()
 ref.hobbies()
 ref.languages()
-ref.dashboard()
-# ref.take_assesment()
-# ref.personality_assesment()
-# ref.my_profile()
+ref.take_assesment()
+ref.personality_assesment()
+ref.my_profile()
+
 
