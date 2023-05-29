@@ -1,4 +1,4 @@
-# Todo: ! Sign-UP ! Login ! Complete Profile ! Take Assessment ! My Profile ! Share Profile !
+# Todo: ! Sign-UP ! Login ! Complete Profile ! Take Assessment ! My Profile ! Share Profile ! Membership[little logic need to do] !
 
 import time
 from selenium import webdriver
@@ -16,7 +16,6 @@ password = "New@1234"
 location = "Bengaluru, Karnataka, India"
 company_name = "Cognizant"
 skills = "Python"
-
 class Automation:
     # Sign =-Up Page
     def signup(self):
@@ -801,72 +800,126 @@ class Automation:
         membership = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']")))
         membership.click()
         time.sleep(3)
+        # Slide the browser to down.
+        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(3)
+        parent_wind = driver.current_window_handle
         # Click on Subscribe Button
+        # ! Form Fill
         for i in range(2, 5):
-            choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div[2]/div{i}//button")))
+            choice = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div[2]/div[2]/div/div[2]/div[{i}]//button")))
             choice.click()
-            ! Form Fill
-            name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
-            name_.send_keys(name)
-            country = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
-            country.send_keys(country)
-            state = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
-            state.send_keys(name)
-            city = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
-            city.send_keys(name)
-            street = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
-            street.send_keys(name)
-            zip_code = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
-            zip_code.send_keys(name)
-            ! Close Form
-            close = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='Close']")))
+            name_ = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
+            name_.send_keys("amith")
+            country = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
+            country.send_keys("India")
+            state = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
+            state.send_keys("karnataka")
+            city = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
+            city.send_keys("bangalore")
+            street = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
+            street.send_keys("yelahanka")
+            zip_code = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
+            zip_code.send_keys("560066")
+            # ! Close Form
+            close = WebDriverWait(driver, 20).until(
+                ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='Close']")))
             close.click()
-            # Proceed
-            # proceed = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form//button")))
-            # proceed.click()
-
-        # Slide the browser to down.
-        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
-        time.sleep(3)
-        # If User wants to Subscribe for any Plan
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
-        time.sleep(3)
-        # CLose Button after Subscribe
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Close this Tab']"))).click()
-        time.sleep(3)
-        # Click on refresh Button
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
-        time.sleep(4)
-        driver.refresh()
-        # Click on Membership
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']"))).click()
-        time.sleep(3)
-
-        # Click on Subscribe Button
-        # Entry
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[2]//button"))).click()
-        # Mid
-        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[3]//button"))).click()
+        # ! Flow of Subscription
+        # Click on Entry and Try to Subscribe
+        # ! Fill the form Again
+        choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[2]//button")))
+        choice.click()
+        name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
+        name_.send_keys("amith")
+        country = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
+        country.send_keys("India")
+        time.sleep(2)
+        country.send_keys(Keys.TAB)
+        state = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
+        state.send_keys("karnataka")
+        state.send_keys(Keys.TAB)
+        city = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
+        city.send_keys("Bangalore")
+        street = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
+        street.send_keys("yelahanka")
+        zip_code = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
+        zip_code.send_keys("560066")
+        proceed = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Proceed']")))
+        proceed.click()
         time.sleep(5)
-        # Senior
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@class='css-lemyrc']/div[4]//button"))).click()
-
-        # Slide the browser to down.
-        driver.find_element(By.TAG_NAME, value="Body").send_keys(Keys.PAGE_DOWN)
-
-        time.sleep(3)
-        # If User wants to Subscribe for any Plan
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
-        time.sleep(3)
-        # CLose Button after Subscribe
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Close this Tab']"))).click()
-        time.sleep(3)
+        all_handles = driver.window_handles
+        # ! I have shift the page to current Window so that the element finds the element in the current page.
+        for handle in all_handles:
+            if handle != parent_wind:
+                driver.switch_to.window(handle)
+                driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+                # As I am in testing need to click on success link
+                success = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//a[text()='Success']")))
+                success.click()
+                time.sleep(2)
+                # If User wants to Subscribe for any Plan
+                WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@type='submit' and @id='submit-button']"))).click()
+                time.sleep(3)
+                # Close Button after Subscribe
+                WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Close this Tab']"))).click()
+                time.sleep(3)
+                break
+        driver.switch_to.window(parent_wind)
         # Click on refresh Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
         time.sleep(4)
         driver.refresh()
+        time.sleep(3)
+    def settings1(self):
+        """ Settings """
+        # Click on Setting's
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Settings']"))).click()
+        time.sleep(2)
+        # Click on Edit Profile
+        edit_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/ul/li[1]//button")))
+        edit_profile.click()
+        time.sleep(2)
+        driver.back()
+        time.sleep(2)
 
+        # Click on Change Password
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/ul/li[2]//button"))).click()
+        # Old Password
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']//form/div/div[1]//input"))).send_keys(password)
+        # New Password
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']//form/div/div[2]//input"))).send_keys("New@1234")
+        # Confirm Password
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']//form/div/div[3]//input"))).send_keys("New@1234")
+        # To View [eye button]The Password entered
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']//form/div/div[3]//button"))).click()
+        time.sleep(2)
+        # Change Password
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Change Password']"))).click()
+        time.sleep(2)
+        driver.back()
+
+        # Subscription
+        # Click on Cancel Subscription Button
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/ul/li[3]//button"))).click()
+        time.sleep(2)
+        # Click on X mark
+        # close = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='Close']")))
+        # close.click()
+        # Click on Stay Premium
+        # stay_premium = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//footer//button[1]")))
+        # stay_premium.click()
+        # Click on Cancel Subscription Pop-up
+        cancel_subscription = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//footer//button[2]")))
+        cancel_subscription.click()
+        time.sleep(3)
 
 ref = Automation()
 ref.signup()
