@@ -9,7 +9,7 @@ from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.maximize_window()
-k = 54
+k = 64
 name = "Autotest"
 email = f"autotest{k}@g.co"
 password = "New@1234"
@@ -54,16 +54,13 @@ class Automation:
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']"))).click()
         time.sleep(5)
-        time.sleep(3)
 
     def login(self):
-        driver.get("https://test-talentplace.vercel.app/login")
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
         WebDriverWait(driver, 20).until(
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
-        time.sleep(3)
         time.sleep(3)
 
     def welcome_page(self):
@@ -71,7 +68,7 @@ class Automation:
         # Get Started Button for Carrier Profile
         get_started = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Get Started']")))
         get_started.click()
-        time.sleep(5)
+        time.sleep(3)
 
     def personal_details(self):
         """PERSONAL DETAILS"""
@@ -113,12 +110,10 @@ class Automation:
         # Headline
         driver.find_element(By.NAME, "headline").clear()
         driver.find_element(By.NAME, "headline").send_keys("Python automation  Tester")
-        time.sleep(2)
         # Add social media
         add = driver.find_element(By.NAME, "socialMedia.linkedin")
         add.clear()
         add.send_keys("https://www.linkedin.com/in/amith-kulkarni-1326241b4")
-        time.sleep(2)
         # Save
         save = driver.find_element(By.XPATH, "//button[text()='Save']")
         save.click()
@@ -163,7 +158,7 @@ class Automation:
         # Save Button
         save = driver.find_element(By.XPATH, "//button[text()='Save']")
         save.click()
-        time.sleep(3)
+        time.sleep(5)
 
         """!! ADD JOB ROLES !!"""
         # Add Job Role Button
@@ -285,10 +280,13 @@ class Automation:
         time.sleep(5)
         # Save
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))).click()
-        time.sleep(10)
+        time.sleep(5)
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
+        # Discard
+        discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+        discard.click()
         time.sleep(2)
 
     def cognitive_skills(self):
@@ -444,6 +442,7 @@ class Automation:
         # Discard
         discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
         discard.click()
+        time.sleep(2)
 
     def publication(self):
         # """Publication"""
@@ -634,8 +633,7 @@ class Automation:
         time.sleep(2)
 
     def hobbies(self):
-        driver.get("https://test-talentplace.vercel.app/onboarding/hobbies")
-        # """Hobbies"""
+        """Hobbies"""
         category = ['Sports', 'Travel', 'Books']
         hobby = ['Cricket', 'Kerala', 'The untold Story']
         for i in range(len(category)):
@@ -853,7 +851,7 @@ ref.causes()
 ref.hobbies()
 ref.languages()
 ref.dashboard()
-# ref.take_assesment()
-# ref.personality_assesment()
-# ref.my_profile()
+ref.take_assesment()
+ref.personality_assesment()
+ref.my_profile()
 
