@@ -9,28 +9,30 @@ from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.maximize_window()
-k = 64
+k = 66
 name = "Autotest"
-email1 = f"autotest{k}@g.co"
-email = "amithtalentplace@gmail.com"
+email = f"autotest{k}@g.co"
+email1 = "amithtalentplace@gmail.com"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
-phone_number1 = f"+1 1{k}3449771"
-phone_number = "+91 9916646803"
+phone_number = f"+1 1{k}3449771"
+phone_number1 = "+91 9916646803"
 company_name = "cognizant"
 skills = "Python"
+path = f"autotest{k}"
+blog_name = " How Does Technology Influence Today's Working Environment? "
 # cancel = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Cancel']")))
 
 class Automation:
-    # Sign Up Page
     def signup(self):
-
+        """Sign Up Page"""
         # driver.get("https://www.talentplace.ai/")
         driver.get("https://test-talentplace.vercel.app/")
 
         """Sign up button !! """
         sign_up = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']")))
         sign_up.click()
+
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='firstName']"))).send_keys(name)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='lastName']"))).send_keys(name)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='email']"))).send_keys(email)
@@ -52,31 +54,31 @@ class Automation:
         loc.send_keys("Bangalore, Karnataka, India")
         time.sleep(5)
 
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='password']"))).send_keys("New@1234")
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='confirmPassword']"))).send_keys("New@1234")
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='password']"))).send_keys(password)
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@name='confirmPassword']"))).send_keys(password)
 
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']"))).click()
         time.sleep(5)
-
     def login(self):
-        driver.get("https://test-talentplace.vercel.app/login")
+        # driver.get("https://test-talentplace.vercel.app/login")
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
-        time.sleep(3)
-
+        time.sleep(4)
     def welcome_page(self):
         """Welcome, Page"""
         # Get Started Button for Carrier Profile
         get_started = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Get Started']")))
         get_started.click()
         time.sleep(3)
-
     def personal_details(self):
-        driver.get("https://test-talentplace.vercel.app/onboarding/personal-details")
-        time.sleep(2)
+        # driver.get("https://test-talentplace.vercel.app/onboarding/personal-details")
         """PERSONAL DETAILS"""
+        # Upload Profile Picture
+        picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
+        picture.click()
+        time.sleep(5)
         # First name
         driver.find_element(By.ID, "first-name").clear()
         driver.find_element(By.ID, "first-name").send_keys(name)
@@ -123,7 +125,6 @@ class Automation:
         save = driver.find_element(By.XPATH, "//button[text()='Save']")
         save.click()
         time.sleep(5)
-
     def nextback(self):
         # Next button
         back_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[1]"))).click()  # this is next here
@@ -132,7 +133,6 @@ class Automation:
         time.sleep(2)
         # next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         # next_.click()
-
     def experience(self):
         """ADD COMPANY"""
         # Company Name
@@ -236,7 +236,6 @@ class Automation:
         time.sleep(2)
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
-
     def education(self):
         """ADD EDUCATION"""
         # Degree
@@ -293,8 +292,8 @@ class Automation:
         discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
         discard.click()
         time.sleep(2)
-
     def cognitive_skills(self):
+        # driver.get("https://test-talentplace.vercel.app/onboarding/cognitive-skills")
         time.sleep(4)
         """Cognitive skills"""
         for s in range(1, 7):
@@ -309,12 +308,12 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
         next_.click()
-
     def carrier_summary(self):
         """ADD CARRIER SUMMARY"""
         # Generate Summary
         driver.set_window_size(1200, 1400)
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
         generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
         generate_suggestion.click()
         time.sleep(12)
@@ -329,7 +328,6 @@ class Automation:
         customize_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Customise Profile']")))
         customize_profile.click()
         time.sleep(2)
-
     def customize_profile(self):
         driver.maximize_window()
         """Customer Profile"""
@@ -342,7 +340,6 @@ class Automation:
         save_and_next = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']")))
         save_and_next.click()
         time.sleep(2)
-
     def profile_completion(self):
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]")))
@@ -390,7 +387,6 @@ class Automation:
         save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
         save.click()
         time.sleep(4)
-
     def certificate(self):
         for i in range(2):
             # Next
@@ -449,7 +445,6 @@ class Automation:
         discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
         discard.click()
         time.sleep(2)
-
     def publication(self):
         # """Publication"""
         # Title
@@ -491,7 +486,6 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
-
     def patent(self):
         """Patent"""
         # Title
@@ -535,7 +529,6 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
-
     def portfolio(self):
         """Portfolio"""
         # Title
@@ -563,7 +556,6 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
-
     def voluntary_roles(self):
         """Voluntary Roles"""
         # Role
@@ -594,7 +586,6 @@ class Automation:
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
-
     def honor_rewards(self):
         """Honors and Awards"""
         # Title
@@ -623,7 +614,6 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
         time.sleep(1)
-
     def causes(self):
         # driver.get("https://test-talentplace.vercel.app/onboarding/causes")
         time.sleep(4)
@@ -640,7 +630,6 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
         time.sleep(2)
-
     def hobbies(self):
         """Hobbies"""
         category = ['Sports', 'Travel', 'Books']
@@ -667,7 +656,6 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
         time.sleep(2)
-
     def languages(self):
         """Languages"""
         language = ['english', 'kannada', 'Hindi']
@@ -693,12 +681,10 @@ class Automation:
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
         time.sleep(2)
-
     def dashboard(self):
         dashboard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Dashboard']")))
         dashboard.click()
         time.sleep(3)
-
     def take_assesment(self):
         # If user already Logged In.
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Take Assessment']"))).click()
@@ -723,7 +709,6 @@ class Automation:
         view_report = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]//button")))
         view_report.click()
         time.sleep(5)
-
     def personality_assesment(self):
         """Personality Assessment"""
         # Overview
@@ -819,25 +804,9 @@ class Automation:
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
         time.sleep(2)
-
-    def my_profile(self):
-        """ My Profile """
-        # Click on My Profile
-        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='My Profile']"))).click()
-        my_profile_window = driver.current_window_handle
-        # CLick on Share Button to share the Profile
-        share_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[3]/div[1]//button[3]")))
-        share_profile.click()
-        # Copy link
-        copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='edit profile'][4]")))
-        copy_link.click()
-        time.sleep(3)
-        driver.get("https://test-talentplace.vercel.app/share-profile/amithkulkarni98")
-        driver.switch_to.window(my_profile_window)
-        time.sleep(2)
-        driver.back()
-
     def membership(self):
+        # driver.get("https://test-talentplace.vercel.app/membership")
+        time.sleep(2)
         """ Membership """
         # Click on Membership
         membership = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Membership']")))
@@ -869,33 +838,35 @@ class Automation:
             close.click()
         # ! Flow of Subscription
         # Click on Entry and Try to Subscribe
-        """Fill the form Again"""
-        choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[2]//button")))
-        choice.click()
-        name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
-        name_.send_keys("amith")
-        country = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
-        country.send_keys("India")
-        time.sleep(2)
-        country.send_keys(Keys.TAB)
-        state = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
-        state.send_keys("karnataka")
-        state.send_keys(Keys.TAB)
-        city = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
-        city.send_keys("Bangalore")
-        street = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
-        street.send_keys("yelahanka")
-        zip_code = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
-        zip_code.send_keys("560066")
-        proceed = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Proceed']")))
-        proceed.click()
-        time.sleep(5)
+        for j in range(1):
+            """Fill the form Again"""
+            choice = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div[2]/div[2]//button")))
+            choice.click()
+            name_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[1]//input")))
+            name_.send_keys("amith")
+            country = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[2]//input")))
+            country.send_keys("India")
+            time.sleep(2)
+            country.send_keys(Keys.TAB)
+            state = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[3]//input")))
+            state.send_keys("karnataka")
+            state.send_keys(Keys.TAB)
+            city = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[4]//input")))
+            city.send_keys("Bangalore")
+            street = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[5]//input")))
+            street.send_keys("yelahanka")
+            zip_code = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//form/div/div/div[6]//input")))
+            zip_code.send_keys("560066")
+            proceed = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Proceed']")))
+            proceed.click()
+            time.sleep(5)
         all_handles = driver.window_handles
         # ! I have shift the page to current Window so that the element finds the element in the current page.
         for handle in all_handles:
             if handle != parent_wind:
                 driver.switch_to.window(handle)
                 driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+                time.sleep(2)
                 # As I am in testing need to click on success link
                 success = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//a[text()='Success']")))
                 success.click()
@@ -911,9 +882,34 @@ class Automation:
         # Click on refresh Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Refresh']"))).click()
         time.sleep(4)
-        driver.refresh()
+        for i in range(4):
+            driver.refresh()
+            time.sleep(2)
         time.sleep(3)
-
+    def my_profile(self):
+        # driver.get("https://test-talentplace.vercel.app/profile")
+        time.sleep(2)
+        """ My Profile """
+        # Click on My Profile
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='My Profile']"))).click()
+        my_profile_window = driver.current_window_handle
+        # CLick on Share Button to share the Profile
+        share_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[3]/div[1]//button[3]")))
+        share_profile.click()
+        # Copy link
+        copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='edit profile'][4]")))
+        copy_link.click()
+        all_handle = driver.window_handles
+        for handle in all_handle:
+            if handle != my_profile_window:
+                driver.switch_to.window(handle)
+                time.sleep(3)
+                driver.get(f"https://test-talentplace.vercel.app/share-profile/{path}")
+                time.sleep(5)
+                driver.close()
+                break
+        driver.switch_to.window(my_profile_window)
+        time.sleep(5)
     def settings(self):
         """ Settings """
         # Click on Setting's
@@ -947,11 +943,85 @@ class Automation:
         cancel_subscription = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//footer//button[2]")))
         cancel_subscription.click()
         time.sleep(3)
-
     def notification(self):
         """ Notification """
         # Click on Notification's
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Notifications']"))).click()
+        time.sleep(3)
+    def blogs(self):
+        """ Blogs """
+        # Click on Blogs
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//p[text()='Blogs']"))).click()
+
+        # All Drop Down
+        sel = driver.find_element(By.XPATH, "//*[@id='root']/div/div[2]/div/div[1]/div//select")
+        sel.click()
+        time.sleep(2)
+        sel1 = Select(sel)
+        sel1.select_by_value("2")
+
+        # Search Button
+        search = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]//input")))
+        search.send_keys(blog_name)
+        search.send_keys(Keys.ENTER)
+        time.sleep(2)
+        # if User wants to see all the Blogs.
+        search.clear()
+        time.sleep(3)
+
+        # Access The Blogs
+        # ! Go through 3 Blogs ! Like !comment !type comment !add comment button!share[in all]!
+        for b in range(1, 4):
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@id='root']/div/div[2]/div/div[3]/div[{b}]//button"))).click()
+            for i in range(2):
+                driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+            for i in range(2):
+                driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_UP)
+
+            # Like/comment/type comment/add comment button/share
+            like = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div/div[2]/div/div[2]/div/div[1]//*[name()='svg']")))
+            like.click()
+            time.sleep(2)
+
+            comment_button = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div/div[2]/div/div[2]/div/div[2]//*[name()='svg']")))
+            comment_button.click()
+            time.sleep(2)
+
+            comment = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div/div[2]/div/div[3]/div/div[2]/div[2]//textarea")))
+            comment.send_keys(" I am doing Automation")
+            time.sleep(1)
+
+            add_comment = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div/div[2]/div/div[3]/div/div[2]/div[2]//button")))
+            add_comment.click()
+            time.sleep(2)
+
+            share = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div/div[2]/div/div[2]/div/div[3]//*[name()='svg']")))
+            blogs_window = driver.current_window_handle
+
+            #  ! Share in WhatsApp ! # Share in Facebook ! # Share in  LinkedIn !
+            for j in range(1, 4):
+                share.click()
+                WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//body/div[5]/div[1]/section//button[{j}]"))).click()
+                all_handles = driver.window_handles
+                for handle in all_handles:
+                    if handle != blogs_window:
+                        driver.switch_to.window(handle)
+                        time.sleep(3)
+                        driver.close()
+                        time.sleep(5)
+                        break
+                driver.switch_to.window(blogs_window)
+
+            # Copy The Link
+            share.click()
+            copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//body/div[5]/div[1]/section//button[4]")))
+            copy_link.click()
+            time.sleep(3)
+            driver.back()
+
+        # Back to Dash Board[Image Icon]
+        image_click = driver.execute_script("return document.getElementsByTagName('a')[2];")
+        driver.execute_script("arguments[0].click();", image_click)
         time.sleep(3)
 
 
@@ -979,9 +1049,9 @@ ref.languages()
 ref.dashboard()
 ref.take_assesment()
 ref.personality_assesment()
-ref.my_profile()
 ref.membership()
+ref.my_profile()
 ref.settings()
 ref.notification()
-
+ref.blogs()
 

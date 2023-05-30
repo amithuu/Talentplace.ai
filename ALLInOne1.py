@@ -78,6 +78,10 @@ class Automation:
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Build Career Profile']"))).click()
     def personal_details(self):
         """PERSONAL DETAILS"""
+        # Upload Profile Picture
+        picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
+        picture.click()
+        time.sleep(5)
         # First name
         driver.find_element(By.ID, "first-name").clear()
         driver.find_element(By.ID, "first-name").send_keys(name)
@@ -141,11 +145,12 @@ class Automation:
         # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']/button[2]"))).click()
         # Save and Next Button
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Save and Next']"))).click()
-    # delete the old one
-    # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-1ixh03']"))).click()
-    # time.sleep(2)
-    # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-11pbcgl']"))).click()
-    # time.sleep(2)
+    def delete(self):
+        """ delete if content already is there """
+        # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-1ixh03']"))).click()
+        # time.sleep(2)
+        # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[@class='chakra-button css-11pbcgl']"))).click()
+        # time.sleep(2)
     def addexperience(self):
         """ADD COMPANY"""
         # Company Name
