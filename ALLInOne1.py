@@ -926,6 +926,7 @@ class Automation:
         cancel_subscription.click()
         time.sleep(3)
 
+
 ref = Automation()
 ref.signup()
 ref.login()
