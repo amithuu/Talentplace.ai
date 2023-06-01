@@ -9,6 +9,9 @@ from selenium.webdriver.support import expected_conditions as ec\
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 
-class projects():
+class Projects():
 
     def projects(self):
+
+ref = Projects()
+ref.projects()
