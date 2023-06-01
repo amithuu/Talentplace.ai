@@ -12,6 +12,7 @@ driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 class Projects():
 
     def projects(self):
+        pass
 
 ref = Projects()
 ref.projects()
