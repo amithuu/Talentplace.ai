@@ -9,7 +9,7 @@ from selenium.webdriver import ActionChains, Keys
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.maximize_window()
-k = 66
+k = 69
 name = "Autotest"
 email = f"autotest{k}@g.co"
 email1 = "amithtalentplace@gmail.com"
@@ -76,9 +76,9 @@ class Automation:
         # driver.get("https://test-talentplace.vercel.app/onboarding/personal-details")
         """PERSONAL DETAILS"""
         # Upload Profile Picture
-        picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
-        picture.click()
-        time.sleep(5)
+        # picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
+        # picture.click()
+        # time.sleep(5)
         # First name
         driver.find_element(By.ID, "first-name").clear()
         driver.find_element(By.ID, "first-name").send_keys(name)
@@ -219,13 +219,13 @@ class Automation:
         end_salary = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[5]/div[2]/input")))
         end_salary.send_keys("25000")
         # Roles and Responsibility
-        generate_suggestions = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[6]/div/div[2]//button")))
-        generate_suggestions.click()
+        # generate_suggestions = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@role='region']/form/div/div[6]/div/div[2]//button")))
+        # generate_suggestions.click()
         time.sleep(10)
         # Click on Some Points
-        for j in range(1, 4):
-            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@role='region']/form/div/div[6]/div/div[2]//div[{j}]//button"))).click()
-            time.sleep(1)
+        # for j in range(1, 4):
+        #     WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[@role='region']/form/div/div[6]/div/div[2]//div[{j}]//button"))).click()
+        #     time.sleep(1)
         # Click on Save Button
         save = driver.find_element(By.XPATH, "//button[text()='Save']")
         save.click()
@@ -314,12 +314,12 @@ class Automation:
         driver.set_window_size(1200, 1400)
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
         time.sleep(2)
-        generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
-        generate_suggestion.click()
-        time.sleep(12)
-        for a in range(1, 4):
-            driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[1]/div/div[{a}]//button").click()
-            time.sleep(1)
+        # generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
+        # generate_suggestion.click()
+        # time.sleep(12)
+        # for a in range(1, 4):
+        #     driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[1]/div/div[{a}]//button").click()
+        #     time.sleep(1)
         # Save
         save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
         save.click()
@@ -363,6 +363,7 @@ class Automation:
         associated_with = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[3]/div[1]//input")))
         associated_with.send_keys(company_name)
         associated_with.send_keys(Keys.TAB)
+        time.sleep(1)
         # Project url
         project_url = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@role='region']/form/div/div[3]/div[2]//input")))
         project_url.send_keys("https://web.whatsapp.com")
@@ -1001,7 +1002,7 @@ class Automation:
             #  ! Share in WhatsApp ! # Share in Facebook ! # Share in  LinkedIn !
             for j in range(1, 4):
                 share.click()
-                WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//body/div[5]/div[1]/section//button[{j}]"))).click()
+                WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//body/div[4]/div/section//button[{j}]"))).click()
                 all_handles = driver.window_handles
                 for handle in all_handles:
                     if handle != blogs_window:
@@ -1014,7 +1015,7 @@ class Automation:
 
             # Copy The Link
             share.click()
-            copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//body/div[5]/div[1]/section//button[4]")))
+            copy_link = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//body/div[4]/div[1]/section//button[4]")))
             copy_link.click()
             time.sleep(3)
             driver.back()
