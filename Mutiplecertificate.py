@@ -30,8 +30,8 @@ class Certificate():
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
         time.sleep(3)
 
-        editprofile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Edit Profile']")))
-        editprofile.click()
+        edit_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Edit Profile']")))
+        edit_profile.click()
 
         exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Certification']")))
         exp.click()
