@@ -12,11 +12,9 @@ driver.maximize_window()
 k = 69
 name = "Autotest"
 email = f"autotest{k}@g.co"
-email1 = "amithtalentplace@gmail.com"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
 phone_number = f"+1 1{k}3449771"
-phone_number1 = "+91 9916646803"
 company_name = "cognizant"
 skills = "Python"
 path = f"autotest{k}"
@@ -314,12 +312,12 @@ class Automation:
         driver.set_window_size(1200, 1400)
         driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
         time.sleep(2)
-        # generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
-        # generate_suggestion.click()
-        # time.sleep(12)
-        # for a in range(1, 4):
-        #     driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[1]/div/div[{a}]//button").click()
-        #     time.sleep(1)
+        generate_suggestion = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
+        generate_suggestion.click()
+        time.sleep(12)
+        for a in range(1, 4):
+            driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[1]/div/div[{a}]//button").click()
+            time.sleep(1)
         # Save
         save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
         save.click()
@@ -641,18 +639,23 @@ class Automation:
             categorys.click()
             categorys.send_keys(category[i])
             categorys.send_keys(Keys.TAB)
-            time.sleep(2)
+            time.sleep(1)
             # Hobbies Text
             hobbies = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]//input")))
             hobbies.send_keys(hobby[i])
-            time.sleep(2)
             # Add Hobbies '+' Button
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[1]/div/div[2]/button"))).click()
+            # Save
+            save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
+            save.click()
             time.sleep(2)
-        # Save
-        save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
-        save.click()
-        time.sleep(3)
+            # Back
+            back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[1]")))
+            back_to_company.click()
+            # Next
+            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
+            next_.click()
+            time.sleep(1)
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div[2]//button[2]")))
         next_.click()
@@ -935,6 +938,20 @@ class Automation:
         time.sleep(2)
         # Change Password
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Change Password']"))).click()
+        time.sleep(2)
+        driver.back()
+        # Change Mobile Number
+        change_mobile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Change Mobile']")))
+        change_mobile.click()
+        update_number = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']//input")))
+        update_number.send_keys("9916646803")
+        send_otp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]//button")))
+        send_otp.click()
+        enter_otp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//body/div[6]/div/div//input[1]")))
+        for o in range(1,7):
+            enter_otp.send_keys("1")
+        verify_otp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Verify OTP']")))
+        verify_otp.click()
         time.sleep(2)
         driver.back()
         # Subscription

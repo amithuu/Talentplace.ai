@@ -93,12 +93,10 @@ class Projects():
             # Back
             back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
             back_to_company.click()
-            time.sleep(2)
-
             # Next
             next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
             next_.click()
-            time.sleep(2)
+            time.sleep(1)
 
 
 ref = Projects()
