@@ -9,7 +9,7 @@ from selenium.webdriver.support.select import Select
 
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-email = "autotest64@g.co"
+email = "sozolebur@mailinator.com"
 password = "New@1234"
 titles = ["voluntaryroles1", "voluntaryroles2", "voluntaryroles3"]
 issuers = ["Reva", "BMSIT", "ISCIT"]
@@ -21,7 +21,8 @@ descriptions = ["hiii i am writing description about my voluntaryroles 1", "hiii
 class Voluntaryroles():
 
     def login(self):
-        driver.get("https://test-talentplace.vercel.app/login")
+        driver.get("https://www.talentplace.ai/login")
+        # driver.get("https://test-talentplace.vercel.app/login")
         driver.maximize_window()
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)

@@ -9,7 +9,7 @@ from selenium.webdriver.support.select import Select
 
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-email = "autotest64@g.co"
+email = "sozolebur@mailinator.com"
 password = "New@1234"
 publicationtitle = ["publication1","publication2","publication3"]
 publicationid = ["123", "1234", "12345"]
@@ -23,6 +23,7 @@ descriptions = ["hiii i am writing description about my Publication 1", "hiii i 
 class Publication():
 
     def login(self):
+        driver.get("https://www.talentplace.ai/login")
         driver.get("https://test-talentplace.vercel.app/login")
         driver.maximize_window()
         """ Login Page"""
