@@ -10,13 +10,13 @@ from selenium.webdriver import ActionChains, Keys
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 k=1
 name = "Autotest"
-email = f"autotest{k}@g.co"
+email = f"autotest31@g.co"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
-phone_number = f"+1 123{k}449771"
+phone_number = f"+1 1231449771"
 
 # Company variables
-"""companyname = ["cognizant", "dell", "ibm"]
+companyname = ["cognizant", "dell", "ibm"]
 jobtype = ["full time", "intern", "part time", "freelanc", "contract"]
 industryexp = ["Advanced Technologies", "IT Services", "Agri-business"]
 orgtype = ["startup", "small", "mnc"]
@@ -30,9 +30,10 @@ functionalarea = ["development", "human", "marketing"]
 skilladd = ["java", "python", "c prog"]
 expertiserole = ["beg", "skil", "expert"]
 startsalary = ["1000", "2000", "3000"]
-endsalary = ["10000", "20000", "30000"]"""
+endsalary = ["10000", "20000", "30000"]
+
 # Projects variables
-"""projectname= ["My Project1", "My Project2", "My Project3"]
+projectname= ["My Project1", "My Project2", "My Project3"]
 associatedwith = ["cognizant", "dell", "ibm"]
 projectlink = ["https://test-talentplace.vercel.app/edit-resume/projects", "https://test-talentplace.vercel.app/edit-resume/education", "https://test-talentplace.vercel.app/edit-resume/portfolio"]
 descriptions = ["hiii i am writing description about my projects 1", "hiii i am writing description about my projects 2", "hiii i am writing description about my projects 3"]
@@ -41,9 +42,10 @@ skillapplications = ["hiii this is my skill application 1", "hiii this is my ski
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
 endmonth = ["feb", "april", "jan"]
-endyear = ["2019", "2020", "2021"]"""
+endyear = ["2019", "2020", "2021"]
+
 # Education variables
-"""degreequalification = ["Mca", "BCA", "Mtech"]
+degreequalification = ["Mca", "BCA", "Mtech"]
 universitys = ["REVA UNI", "seshadri", "presid"]
 locations = ["bangalore", "Delhi", "Odisha"]
 Cgpas= ["8.98", "7.65", "5.09"]
@@ -52,66 +54,72 @@ startyear = ["1999", "2000", "2001"]
 endmonth = ["feb", "april", "jan"]
 endyear = ["2019", "2020", "2021"]
 skilladd = ["java", "python", "c prog"]
-extraactivities = ["!!!!!!!!!!I love playing Cricket!!!!!!!!", "!!!!!!!!!!!!!I love Watching Cricket!!!!!!!", "!!!!!!!!!!!I love Cricket that it!!!!!!!!"]"""
+extraactivities = ["!!!!!!!!!!I love playing Cricket!!!!!!!!", "!!!!!!!!!!!!!I love Watching Cricket!!!!!!!", "!!!!!!!!!!!I love Cricket that it!!!!!!!!"]
+
 # Certification variables
-"""certificate_title= ["My Certificate 1", "My Certificate 2", "My Certificate 3"]
+certificate_title= ["My Certificate 1", "My Certificate 2", "My Certificate 3"]
 institutions = ["Reva", "Isam", "Revam"]
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
 endmonth = ["feb", "april", "jan"]
 endyear = ["2019", "2020", "2021"]
 skilladd = ["java", "python", "c prog"]
-projects = ["hiii i am writing description about my Certificate 1", "hiii i am writing description about my Certificate 2", "hiii i am writing description about my Certificate 3"]"""
+projects = ["hiii i am writing description about my Certificate 1", "hiii i am writing description about my Certificate 2", "hiii i am writing description about my Certificate 3"]
+
 # Publication variables
-"""publicationtitle = ["publication1","publication2","publication3"]
+publicationtitle = ["publication1","publication2","publication3"]
 publicationid = ["123", "1234", "12345"]
 publicationdate = ["02/02/1999", "03/03/2020", "02/04/1898"]
 publicationurl = ["https://test-talentplace.vercel.app/edit-resume/publication", "https://test-talentplace.vercel.app/edit-resume/portfolio", "https://test-talentplace.vercel.app/edit-resume/causes"]
 selects = ["Mr", "Ms", "Mrs"]
 name = ["amith0", "amith1", "amith2"]
 linkdinlink = ["https://www.linkedin.com/in/amith-kulkarni-1326241b4", "https://www.linkedin.com/in/amith-kulkarni-1326241b4","https://www.linkedin.com/in/amith-kulkarni-1326241b4"]
-descriptions = ["hiii i am writing description about my Publication 1", "hiii i am writing description about my Publication 2", "hiii i am writing description about my Publication 3"]"""
+descriptions = ["hiii i am writing description about my Publication 1", "hiii i am writing description about my Publication 2", "hiii i am writing description about my Publication 3"]
+
 # Patent variables
-"""patenttitle = ["Patent1","Patent2","Patent3"]
+patenttitle = ["Patent1","Patent2","Patent3"]
 patentid = ["123", "1234", "12345"]
 patentdate = ["02/02/1999", "03/03/2020", "02/04/1898"]
 patenturl = ["https://test-talentplace.vercel.app/edit-resume/Patent", "https://test-talentplace.vercel.app/edit-resume/portfolio", "https://test-talentplace.vercel.app/edit-resume/causes"]
 selects = ["Mr", "Ms", "Mrs"]
 name = ["amith0", "amith1", "amith2"]
 linkdinlink = ["https://www.linkedin.com/in/amith-kulkarni-1326241b4", "https://www.linkedin.com/in/amith-kulkarni-1326241b4","https://www.linkedin.com/in/amith-kulkarni-1326241b4"]
-descriptions = ["hiii i am writing description about my Patent 1", "hiii i am writing description about my Patent 2", "hiii i am writing description about my Patent 3"]"""
+descriptions = ["hiii i am writing description about my Patent 1", "hiii i am writing description about my Patent 2", "hiii i am writing description about my Patent 3"]
+
 # Portfolio variables
-"""portfoliotitle = ["portfolio1", "portfolio2", "portfolio3"]
+portfoliotitle = ["portfolio1", "portfolio2", "portfolio3"]
 linkdinlink = ["https://www.linkedin.com/in/amith-kulkarni-1326241b4", "https://www.linkedin.com/in/amith-kulkarni-1326241b4","https://www.linkedin.com/in/amith-kulkarni-1326241b4"]
-descriptions = ["hiii i am writing description about my portfolio 1", "hiii i am writing description about my portfolio 2", "hiii i am writing description about my portfolio 3"]"""
+descriptions = ["hiii i am writing description about my portfolio 1", "hiii i am writing description about my portfolio 2", "hiii i am writing description about my portfolio 3"]
+
 # Voluntary Roles
-"""roles = ["voluntaryroles1", "voluntaryroles2", "voluntaryroles3"]
+roles = ["voluntaryroles1", "voluntaryroles2", "voluntaryroles3"]
 organization = ["Reva", "BMSIT", "ISCIT"]
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
 endmonth = ["feb", "april", "jan"]
 endyear = ["2019", "2020", "2021"]
 descriptions = ["hiii i am writing description about my voluntaryroles 1", "hiii i am writing description about my voluntaryroles 2", "hiii i am writing description about my voluntaryroles 3"]
-"""
+
 # Honor and Awards variable
-"""titles = ["voluntaryroles1", "voluntaryroles2", "voluntaryroles3"]
+titles = ["voluntaryroles1", "voluntaryroles2", "voluntaryroles3"]
 issuers = ["Reva", "BMSIT", "ISCIT"]
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
 associatedwith = ["cognizant", "dell", "ibm"]
 descriptions = ["hiii i am writing description about my voluntaryroles 1", "hiii i am writing description about my voluntaryroles 2", "hiii i am writing description about my voluntaryroles 3"]
-"""
+
 # Hobbies variables
-"""category = ['Sports', 'Travel', 'Books']
-hobby = ['Cricket', 'Kerala', 'The untold Story']"""
+category = ['Sports', 'Travel', 'Books']
+hobby = ['Cricket', 'Kerala', 'The untold Story']
 # Languages variables
-"""language = ['english', 'kannada', 'Hindi']
-proficiency = ['inter', 'adv', 'begin']"""
+language = ['english', 'kannada', 'Hindi']
+proficiency = ['inter', 'adv', 'begin']
 
 class MultipleForms():
 
     def login(self):
         driver.get("https://test-talentplace.vercel.app/login")
+        driver.maximize_window()
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
@@ -119,12 +127,12 @@ class MultipleForms():
             ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
         time.sleep(4)
 
-        editprofile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Edit Profile']")))
-        editprofile.click()
+        edit_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Edit Profile']")))
+        edit_profile.click()
 
         exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Experience']")))
         exp.click()
-    def addcompany(self,i):
+    def addcompany(self, i):
 
         add_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button")))
         add_company.click()
@@ -377,15 +385,19 @@ class MultipleForms():
             # time.sleep(5)
 
             # Save
-            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/button"))).click()
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div/div[2]/div/div/form/div/button"))).click()
             time.sleep(5)
+
+            # Back
+            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
+            next_.click()
             # Next
             next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
             next_.click()
             # Discard
-            discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-            discard.click()
-            time.sleep(2)
+            # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+            # discard.click()
+            # time.sleep(2)
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
         next_.click()
@@ -644,6 +656,47 @@ class MultipleForms():
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
         next_.click()
         time.sleep(2)
+    def honorawards(self):
+        for i in range(3):
+            # Add voluntary_roles
+            WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button"))).click()
+            time.sleep(1)
+            """Voluntary_Roles"""
+            # Title
+            title = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[1]//input")
+            title.send_keys(titles[i])
+
+            # Issuer
+            issuer = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[2]//input")))
+            issuer.send_keys(issuers[i])
+
+            duration_from = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[2]/div[1]//input")))
+            duration_from.send_keys(startyear[i])
+            duration_from.send_keys(Keys.TAB)
+            duration_from.send_keys(startyear[i])
+
+            # Associated With
+            associated_with = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[2]/div[2]//input")))
+            associated_with.send_keys(associatedwith[i])
+            associated_with.send_keys(Keys.TAB)
+
+            # Description
+            description = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[3]//p")))
+            description.send_keys(descriptions[i])
+
+            # Save
+            save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/button")))
+            save.click()
+            time.sleep(3)
+
+            # Back
+            back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
+            back_to_company.click()
+
+            # Next
+            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
+            next_.click()
+            time.sleep(2)
     def causes(self):
         time.sleep(4)
         """Causes"""
@@ -738,16 +791,16 @@ class MultipleForms():
     def carrier_summary(self):
         """ADD CARRIER SUMMARY"""
         # Generate Summary
-        driver.set_window_size(1200, 1400)
-        driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
-        time.sleep(2)
-        generate_suggestion = WebDriverWait(driver, 20).until(
-            ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
-        generate_suggestion.click()
-        time.sleep(12)
-        for a in range(1, 4):
-            driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div[2]/div[1]/div{a}//button").click()
-            time.sleep(1)
+        # driver.set_window_size(1200, 1400)
+        # driver.find_element(By.TAG_NAME, value="body").send_keys(Keys.PAGE_DOWN)
+        # time.sleep(2)
+        # generate_suggestion = WebDriverWait(driver, 20).until(
+        #     ec.element_to_be_clickable((By.XPATH, "//button[text()='Generate Suggestions']")))
+        # generate_suggestion.click()
+        # time.sleep(12)
+        # for a in range(1, 4):
+        #     driver.find_element(By.XPATH, f"//div[@id='root']/div[2]/div[2]/div/div/div/div/div/div[2]/div[1]/div{a}//button").click()
+        #     time.sleep(1)
         # Save
         save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Save']")))
         save.click()
@@ -775,8 +828,10 @@ ref.publication()
 ref.patent()
 ref.portfolio()
 ref.voluntaryroles()
+ref.honorawards()
 ref.causes()
 ref.hobbies()
 ref.languages()
 ref.cognitive()
 ref.carrier_summary()
+

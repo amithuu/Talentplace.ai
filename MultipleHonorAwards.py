@@ -18,7 +18,7 @@ startyear = ["1999", "2000", "2001"]
 associatedwith = ["cognizant", "dell", "ibm"]
 descriptions = ["hiii i am writing description about my voluntaryroles 1", "hiii i am writing description about my voluntaryroles 2", "hiii i am writing description about my voluntaryroles 3"]
 
-class Voluntaryroles():
+class HonorAwards():
 
     def login(self):
         driver.get("https://www.talentplace.ai/login")
@@ -35,7 +35,7 @@ class Voluntaryroles():
 
         exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Honors & Awards']")))
         exp.click()
-    def voluntaryroles(self):
+    def honorawards(self):
         for i in range(3):
             # Add voluntary_roles
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button"))).click()
@@ -78,7 +78,7 @@ class Voluntaryroles():
             time.sleep(2)
 
 
-ref = Voluntaryroles()
+ref = HonorAwards()
 ref.login()
-ref.voluntaryroles()
+ref.honorawards()
 
