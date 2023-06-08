@@ -31,6 +31,8 @@ class Languages:
         exp.click()
 
     def languages(self):
+        exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Languages']")))
+        exp.click()
         time.sleep(2)
         """Languages"""
         for i in range(len(language)):
