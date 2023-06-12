@@ -4,7 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec\
+from selenium.webdriver.support import expected_conditions as ec
 
 
 # Company variables
@@ -13,7 +13,7 @@ jobtype = ["full time", "intern", "part time", "freelanc", "contract"]
 industryexp = ["Advanced Technologies", "IT Services", "Agri-business"]
 orgtype = ["startup", "small", "mnc"]
 based = ["product", "service", "both"]
-location = ["Bangalore", "delhi", "america"]
+location = ["Bangalore", "Delhi, Delhi, India", "Americana, São Paulo, Brazil"]
 
 # Designation variables
 designationrole = ["Developer", "Automation", "application"]
@@ -106,17 +106,24 @@ class Addcompany():
             designation = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[1]/div[1]/div[1]//input")))
             designation.send_keys(designationrole[a-1])
             designation.send_keys(Keys.TAB)
-            time.sleep(2)
             # Management Level
             management_level = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[1]/div[2]/div[1]//input")))
             management_level.send_keys(managementlevel[s])
             management_level.send_keys(Keys.TAB)
-            time.sleep(1)
             # Location
             loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]//input")))
             loc.send_keys(Keys.CONTROL + "a")
             loc.send_keys(location[a-1])
-            time.sleep(3)
+            loc.click()
+
+            """listt = WebDriverWait(driver, 20).until(ec.presence_of_all_elements_located((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]/div/ul/li")))
+            # checking result thing!!!!
+            for result in listt:
+                if location[a-i] in result.text:
+                    result.click()
+                    break
+            time.sleep(7)"""
+
             # Functional Area
             functional_area = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[2]/div[1]//input")))
             functional_area.send_keys("Development")

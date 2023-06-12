@@ -8,11 +8,11 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.select import Select
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-email = "autotest64@g.co"
+email = "autotest63@g.co"
 password = "New@1234"
 degreequalification = ["Mca", "BCA", "Mtech"]
 universitys = ["REVA UNI", "seshadri", "presid"]
-locations = ["bangalore", "Delhi", "Odisha"]
+locations = ["banga", "delh", "banga"]
 Cgpas= ["8.98", "7.65", "5.09"]
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
@@ -52,7 +52,9 @@ class Education:
             university.send_keys(Keys.TAB)
             # Location
             loc = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[1]//input")
+            loc.send_keys(Keys.CONTROL + "a")
             loc.send_keys(locations[i])
+            loc.click()
             time.sleep(3)
             # CGPA
             cgpa = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[2]//input")))
@@ -87,13 +89,13 @@ class Education:
             # Save
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/button"))).click()
             time.sleep(5)
-            # Next
-            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
-            next_.click()
-            # Discard
-            discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
-            discard.click()
-            time.sleep(2)
+            # # Next
+            # next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
+            # next_.click()
+            # # Discard
+            # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
+            # discard.click()
+            # time.sleep(2)
 
 
 ref = Education()

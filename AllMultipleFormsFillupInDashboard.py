@@ -10,7 +10,7 @@ from selenium.webdriver import ActionChains, Keys
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 k=1
 name = "Autotest"
-email = f"autotest31@g.co"
+email = f"prod1@g.co"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
 phone_number = f"+1 1231449771"
@@ -47,7 +47,7 @@ endyear = ["2019", "2020", "2021"]
 # Education variables
 degreequalification = ["Mca", "BCA", "Mtech"]
 universitys = ["REVA UNI", "seshadri", "presid"]
-locations = ["bangalore", "Delhi", "Odisha"]
+locations = ["Bangalore", "delhi", "america"]
 Cgpas= ["8.98", "7.65", "5.09"]
 startmonth = ["jan", "march", "dec"]
 startyear = ["1999", "2000", "2001"]
@@ -77,7 +77,7 @@ linkdinlink = ["https://www.linkedin.com/in/amith-kulkarni-1326241b4", "https://
 descriptions = ["hiii i am writing description about my Publication 1", "hiii i am writing description about my Publication 2", "hiii i am writing description about my Publication 3"]
 
 # Patent variables
-patenttitle = ["Patent1","Patent2","Patent3"]
+patenttitle = ["Patent1", "Patent2", "Patent3"]
 patentid = ["123", "1234", "12345"]
 patentdate = ["02/02/1999", "03/03/2020", "02/04/1898"]
 patenturl = ["https://test-talentplace.vercel.app/edit-resume/Patent", "https://test-talentplace.vercel.app/edit-resume/portfolio", "https://test-talentplace.vercel.app/edit-resume/causes"]
@@ -118,7 +118,8 @@ proficiency = ['inter', 'adv', 'begin']
 class MultipleForms():
 
     def login(self):
-        driver.get("https://test-talentplace.vercel.app/login")
+        # driver.get("https://test-talentplace.vercel.app/login")
+        driver.get("https://www.talentplace.ai/login")
         driver.maximize_window()
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
@@ -193,12 +194,10 @@ class MultipleForms():
             designation = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[1]/div[1]/div[1]//input")))
             designation.send_keys(designationrole[a-1])
             designation.send_keys(Keys.TAB)
-            time.sleep(2)
             # Management Level
             management_level = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[1]/div[2]/div[1]//input")))
             management_level.send_keys(managementlevel[s])
             management_level.send_keys(Keys.TAB)
-            time.sleep(1)
             # Location
             loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]//input")))
             loc.send_keys(Keys.CONTROL + "a")
@@ -208,19 +207,14 @@ class MultipleForms():
             functional_area = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[2]/div[1]//input")))
             functional_area.send_keys("Development")
             functional_area.send_keys(Keys.TAB)
-            time.sleep(1)
             # Skill
             skill = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[1]//input")))
             skill.send_keys(skilladd[a-1])
             skill.send_keys(Keys.TAB)
-            time.sleep(1)
             # Expertise
-            expertise = WebDriverWait(driver, 20).until(
-                ec.element_to_be_clickable((By.XPATH,
-                                            "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[2]//input")))
+            expertise = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[2]//input")))
             expertise.send_keys(expertiserole[a-1])
             expertise.send_keys(Keys.TAB)
-            time.sleep(1)
             # Add Skill Button
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[2]//button"))).click()
             # Start Date and End date
@@ -228,14 +222,10 @@ class MultipleForms():
             start_date.send_keys("December")
             start_date.send_keys(Keys.TAB)
             start_date.send_keys("2007")
-            time.sleep(1)
-            end_date = WebDriverWait(driver, 20).until(
-                ec.element_to_be_clickable((By.XPATH,
-                                            "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[4]/div[2]//input")))
+            end_date = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[4]/div[2]//input")))
             end_date.send_keys("April")
             end_date.send_keys(Keys.TAB)
             end_date.send_keys("2011")
-            time.sleep(1)
 
             # If user is Still working in same Company
             # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[4]/div[2]/label//input"))).click()
@@ -352,6 +342,7 @@ class MultipleForms():
             university.send_keys(Keys.TAB)
             # Location
             loc = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[1]//input")
+            loc.send_keys(Keys.CONTROL + "a")
             loc.send_keys(locations[i])
             time.sleep(3)
             # CGPA
@@ -809,18 +800,18 @@ class MultipleForms():
 
 ref = MultipleForms()
 ref.login()
-i = 0
-s = 0
-ref.addcompany(i)
-ref.addrole(s)
-i = 1
-s = 1
-ref.addcompany(i)
-ref.addrole(s)
-i = 2
-s = 2
-ref.addcompany(i)
-ref.addrole(s)
+# i = 0
+# s = 0
+# ref.addcompany(i)
+# ref.addrole(s)
+# i = 1
+# s = 1
+# ref.addcompany(i)
+# ref.addrole(s)
+# i = 2
+# s = 2
+# ref.addcompany(i)
+# ref.addrole(s)
 ref.projects()
 ref.education()
 ref.certificate()
