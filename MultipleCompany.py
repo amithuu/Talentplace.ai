@@ -13,7 +13,7 @@ jobtype = ["full time", "intern", "part time", "freelanc", "contract"]
 industryexp = ["Advanced Technologies", "IT Services", "Agri-business"]
 orgtype = ["startup", "small", "mnc"]
 based = ["product", "service", "both"]
-location = ["Bangalore", "Delhi, Delhi, India", "Americana, São Paulo, Brazil"]
+location = ["Bangalore", "delhi", "american"]
 
 # Designation variables
 designationrole = ["Developer", "Automation", "application"]
@@ -25,13 +25,15 @@ startsalary = ["1000", "2000", "3000"]
 endsalary = ["10000", "20000", "30000"]
 
 
-email = "autotest64@g.co"
+email = "prod1@g.co"
 password = "New@1234"
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 class Addcompany():
 
     def login(self):
-        driver.get("https://test-talentplace.vercel.app/login")
+        # driver.get("https://test-talentplace.vercel.app/login")
+        driver.get("https://talentplace.ai/login")
+
         driver.maximize_window()
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
@@ -57,31 +59,31 @@ class Addcompany():
         time.sleep(2)
         company.send_keys(companyname[i])
         company.send_keys(Keys.TAB)
-        time.sleep(1)
+
 
         job_type = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div[1]//input")))
         job_type.click()
         job_type.send_keys(jobtype[i])
         job_type.send_keys(Keys.TAB)
-        time.sleep(1)
+
 
         experience = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div[2]//input")))
         experience.click()
         experience.send_keys(industryexp[i])
         experience.send_keys(Keys.TAB)
-        time.sleep(1)
+
 
         organization = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[3]/div[1]//input")))
         organization.click()
         organization.send_keys(orgtype[i])
         organization.send_keys(Keys.TAB)
-        time.sleep(1)
+
 
         which_based = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[3]/div[2]//input")))
         which_based.click()
         which_based.send_keys(based[i])
         which_based.send_keys(Keys.TAB)
-        time.sleep(1)
+
 
         # Save Button
         save = driver.find_element(By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div/div//button")
@@ -114,7 +116,7 @@ class Addcompany():
             loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]//input")))
             loc.send_keys(Keys.CONTROL + "a")
             loc.send_keys(location[a-1])
-            loc.click()
+            time.sleep(5)
 
             """listt = WebDriverWait(driver, 20).until(ec.presence_of_all_elements_located((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]/div/ul/li")))
             # checking result thing!!!!
@@ -128,19 +130,19 @@ class Addcompany():
             functional_area = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[2]/div[1]//input")))
             functional_area.send_keys("Development")
             functional_area.send_keys(Keys.TAB)
-            time.sleep(1)
+
             # Skill
             skill = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[1]//input")))
             skill.send_keys(skilladd[a-1])
             skill.send_keys(Keys.TAB)
-            time.sleep(1)
+
             # Expertise
             expertise = WebDriverWait(driver, 20).until(
                 ec.element_to_be_clickable((By.XPATH,
                                             "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[2]//input")))
             expertise.send_keys(expertiserole[a-1])
             expertise.send_keys(Keys.TAB)
-            time.sleep(1)
+
             # Add Skill Button
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[3]/div[2]/div[2]//button"))).click()
             # Start Date and End date
@@ -148,14 +150,14 @@ class Addcompany():
             start_date.send_keys("December")
             start_date.send_keys(Keys.TAB)
             start_date.send_keys("2007")
-            time.sleep(1)
+
             end_date = WebDriverWait(driver, 20).until(
                 ec.element_to_be_clickable((By.XPATH,
                                             "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[4]/div[2]//input")))
             end_date.send_keys("April")
             end_date.send_keys(Keys.TAB)
             end_date.send_keys("2011")
-            time.sleep(1)
+
 
             # If user is Still working in same Company
             # WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[4]/div[2]/label//input"))).click()
@@ -182,7 +184,7 @@ class Addcompany():
             # Click on Save Button
             save = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[1]/button")
             save.click()
-            time.sleep(2)
+            time.sleep(5)
 
             # Back to Companies Button
             back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@class='css-hboir5']//button")))

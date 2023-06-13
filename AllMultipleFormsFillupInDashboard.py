@@ -10,10 +10,10 @@ from selenium.webdriver import ActionChains, Keys
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 k=1
 name = "Autotest"
-email = f"prod1@g.co"
+email = f"test@mailinator.com"
 password = "New@1234"
 location = "Bengaluru, Karnataka, India"
-phone_number = f"+1 1231449771"
+phone_number = f"+1 5577357171"
 
 # Company variables
 companyname = ["cognizant", "dell", "ibm"]
@@ -114,7 +114,7 @@ hobby = ['Cricket', 'Kerala', 'The untold Story']
 # Languages variables
 language = ['english', 'kannada', 'Hindi']
 proficiency = ['inter', 'adv', 'begin']
-
+edit = "Patents"
 class MultipleForms():
 
     def login(self):
@@ -124,52 +124,44 @@ class MultipleForms():
         """ Login Page"""
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "email"))).send_keys(email)
         WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.NAME, "password"))).send_keys(password)
-        WebDriverWait(driver, 20).until(
-            ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
+        WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Login']"))).click()
         time.sleep(4)
 
         edit_profile = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Edit Profile']")))
         edit_profile.click()
 
-        exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Experience']")))
+        exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, f"//*[text()= '{edit}']")))
         exp.click()
     def addcompany(self, i):
 
         add_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button")))
         add_company.click()
-        time.sleep(2)
 
         # Company name
         company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[1]/div[1]//input")))
         company.click()
-        time.sleep(2)
         company.send_keys(companyname[i])
         company.send_keys(Keys.TAB)
-        time.sleep(1)
 
         job_type = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div[1]//input")))
         job_type.click()
         job_type.send_keys(jobtype[i])
         job_type.send_keys(Keys.TAB)
-        time.sleep(1)
 
         experience = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div[2]//input")))
         experience.click()
         experience.send_keys(industryexp[i])
         experience.send_keys(Keys.TAB)
-        time.sleep(1)
 
         organization = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[3]/div[1]//input")))
         organization.click()
         organization.send_keys(orgtype[i])
         organization.send_keys(Keys.TAB)
-        time.sleep(1)
 
         which_based = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div/div[3]/div[2]//input")))
         which_based.click()
         which_based.send_keys(based[i])
         which_based.send_keys(Keys.TAB)
-        time.sleep(1)
 
         # Save Button
         save = driver.find_element(By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div/div//button")
@@ -199,10 +191,10 @@ class MultipleForms():
             management_level.send_keys(managementlevel[s])
             management_level.send_keys(Keys.TAB)
             # Location
-            loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]//input")))
+            loc = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[1]/div[1]//input")))
             loc.send_keys(Keys.CONTROL + "a")
-            loc.send_keys(location[a-1])
-            time.sleep(3)
+            loc.send_keys(location[a - 1])
+            time.sleep(5)
             # Functional Area
             functional_area = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH,"//div[@id='root']/div[2]/div[2]/div/div/div[1]/div[2]/div[1]/div/form/div/div[2]/div[2]/div[1]//input")))
             functional_area.send_keys("Development")
@@ -336,14 +328,16 @@ class MultipleForms():
             degree = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[1]/div[1]//input")))
             degree.send_keys(degreequalification[i])
             degree.send_keys(Keys.TAB)
+            time.sleep(1)
             # University
             university = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[1]/div[2]//input")))
             university.send_keys(universitys[i])
             university.send_keys(Keys.TAB)
             # Location
-            loc = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[1]//input")
+            loc = WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[1]//input")))
             loc.send_keys(Keys.CONTROL + "a")
             loc.send_keys(locations[i])
+            loc.send_keys(Keys.BACK_SPACE)
             time.sleep(3)
             # CGPA
             cgpa = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[2]//input")))
@@ -378,17 +372,17 @@ class MultipleForms():
             # Save
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div/div/div/div/div/div[2]/div/div/form/div/button"))).click()
             time.sleep(5)
-
+            driver.refresh()
             # Back
-            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
-            next_.click()
-            # Next
-            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
-            next_.click()
-            # Discard
+            back_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
+            back_.click()
+            # # Discard
             # discard = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Discard']")))
             # discard.click()
             # time.sleep(2)
+            # Next
+            next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
+            next_.click()
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
         next_.click()
@@ -433,6 +427,8 @@ class MultipleForms():
             save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/button")))
             save.click()
             time.sleep(4)
+
+            driver.refresh()
 
             # Back
             back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
@@ -506,7 +502,6 @@ class MultipleForms():
         for i in range(3):
             # Add Patent
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button"))).click()
-            time.sleep(1)
             """Patent"""
             # Title
             title = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[1]/div[1]//input")
@@ -520,7 +515,7 @@ class MultipleForms():
             # Patent Url
             patent_url = driver.find_element(By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[2]/div[2]//input")
             patent_url.send_keys(patenturl[i])
-            time.sleep(2)
+            time.sleep(1)
             # Add Author
             add_author = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/div[3]//button")))
             add_author.click()
@@ -543,18 +538,16 @@ class MultipleForms():
             # Save
             save = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/button")))
             save.click()
-            time.sleep(3)
+            time.sleep(5)
             # Back
             back = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[1]")))
             back.click()
             # Next
             next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
             next_.click()
-            time.sleep(2)
         # Next
         next_ = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
         next_.click()
-        time.sleep(2)
     def portfolio(self):
         for i in range(3):
             # Add portfolio
@@ -800,18 +793,18 @@ class MultipleForms():
 
 ref = MultipleForms()
 ref.login()
-# i = 0
-# s = 0
-# ref.addcompany(i)
-# ref.addrole(s)
-# i = 1
-# s = 1
-# ref.addcompany(i)
-# ref.addrole(s)
-# i = 2
-# s = 2
-# ref.addcompany(i)
-# ref.addrole(s)
+i = 0
+s = 0
+ref.addcompany(i)
+ref.addrole(s)
+i = 1
+s = 1
+ref.addcompany(i)
+ref.addrole(s)
+i = 2
+s = 2
+ref.addcompany(i)
+ref.addrole(s)
 ref.projects()
 ref.education()
 ref.certificate()
