@@ -8,7 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class LoginPage:
 
-
     def loginpage(self):
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
         driver.get("https://test-talentplace.vercel.app/")
