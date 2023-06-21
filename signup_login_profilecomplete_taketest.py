@@ -25,7 +25,7 @@ class Automation:
     def signup(self):
         """Sign Up Page"""
         # driver.get("https://www.talentplace.ai/")
-        driver.get("https://test-talentplace.vercel.app/")
+        # driver.get("https://test-talentplace.vercel.app/")
 
         """Sign up button !! """
         sign_up = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//button[text()='Sign Up']")))
@@ -74,9 +74,9 @@ class Automation:
         # driver.get("https://test-talentplace.vercel.app/onboarding/personal-details")
         """PERSONAL DETAILS"""
         # Upload Profile Picture
-        # picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
-        # picture.click()
-        # time.sleep(5)
+        picture = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Upload profile']")))
+        picture.click()
+        time.sleep(5)
         # First name
         driver.find_element(By.ID, "first-name").clear()
         driver.find_element(By.ID, "first-name").send_keys(name)
