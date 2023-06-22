@@ -84,9 +84,9 @@ class Education:
             extra_circular_activities.send_keys(extraactivities[i])
             time.sleep(1)
             # # Click to Upload Image
-            # click_upload_image = driver.execute_script(" return document.getElementsByTagName('u')[0]")
-            # driver.execute_script("arguments[0].click();", click_upload_image)
-            # time.sleep(5)
+            click_upload_image = driver.execute_script("return document.getElementsByTagName('u')[0]")
+            driver.execute_script("arguments[0].click();", click_upload_image)
+            time.sleep(5)
 
             # Save
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/form/div/button"))).click()
