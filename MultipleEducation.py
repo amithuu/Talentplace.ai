@@ -38,6 +38,7 @@ class Education:
 
         exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Education']")))
         exp.click()
+
     def education(self):
         for i in range(3):
             # Add Education
