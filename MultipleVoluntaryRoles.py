@@ -51,6 +51,8 @@ class Voluntaryroles():
             voluntary_organization.send_keys(organization[i])
 
             duration_from = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[2]/div[1]//input")))
+            # // *[ @ id = 'root'] / div[2] / div[2] / div / div / div / div / div[2] / div / div / div / div[2] / div[
+            #     1] // select
             duration_from.send_keys(startyear[i])
             duration_from.send_keys(Keys.TAB)
             duration_from.send_keys(startyear[i])

@@ -41,8 +41,8 @@ class Cognitive:
         save.click()
         time.sleep(2)
         # Back
-        back_to_company = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
-        back_to_company.click()
+        next = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//div[@id='root']/div[2]/div[2]/div/div/div[2]/button[2]")))
+        next.click()
 
 
 ref = Cognitive()

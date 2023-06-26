@@ -37,7 +37,7 @@ class HonorAwards():
         exp.click()
     def honorawards(self):
         for i in range(3):
-            # Add voluntary_roles
+            # Add honor_awards
             WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[@id='root']/div[2]/div[2]/div/div/div/div/div[2]//button"))).click()
             time.sleep(1)
             """Voluntary_Roles"""

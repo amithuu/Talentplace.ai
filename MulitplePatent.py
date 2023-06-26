@@ -37,6 +37,7 @@ class Patent():
 
         exp = WebDriverWait(driver, 20).until(ec.element_to_be_clickable((By.XPATH, "//*[text()='Patents']")))
         exp.click()
+
     def patent(self):
         for i in range(3):
             # Add Patent
